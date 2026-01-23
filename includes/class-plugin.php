@@ -71,6 +71,7 @@ class Plugin {
 		// Register admin menu and assets.
 		add_action( 'admin_menu', array( $this->get_admin_hooks(), 'add_menu_items' ) );
 		add_action( 'admin_enqueue_scripts', array( $this->get_admin_hooks(), 'enqueue_admin_assets' ) );
+		add_filter( 'plugin_action_links_' . ECSP_BASENAME, array( $this->get_admin_hooks(), 'add_plugin_action_links' ) );
 
 		// Start output buffering for CSP processing.
 		add_action( 'template_redirect', array( $this->get_output_buffer(), 'start_buffer' ) );

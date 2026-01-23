@@ -20,6 +20,27 @@ defined( 'ABSPATH' ) || die();
 class Admin_Hooks {
 
 	/**
+	 * Add plugin action links.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param array $links Existing plugin action links.
+	 *
+	 * @return array Modified plugin action links.
+	 */
+	public function add_plugin_action_links( array $links ): array {
+		$settings_link = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( admin_url( 'options-general.php?page=easy-csp-headers' ) ),
+			esc_html__( 'Settings', 'easy-csp-headers' )
+		);
+
+		array_unshift( $links, $settings_link );
+
+		return $links;
+	}
+
+	/**
 	 * Add admin menu items.
 	 *
 	 * @since 0.1.0

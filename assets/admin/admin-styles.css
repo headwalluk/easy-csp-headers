@@ -1,0 +1,33 @@
+/**
+ * Admin styles for Easy CSP Headers.
+ *
+ * @package Easy_CSP_Headers
+ * @since 0.1.0
+ */
+
+.tab-panel {
+	margin-top: 20px;
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.tab-panel h2 {
+	margin-top: 0;
+}
+
+.tab-panel h3 {
+	margin-top: 1.5em;
+}
+
+.tab-panel ol,
+.tab-panel ul {
+	margin-left: 2em;
+}
+
+.tab-panel code {
+	background: #f0f0f1;
+	padding: 2px 6px;
+	border-radius: 3px;
+}

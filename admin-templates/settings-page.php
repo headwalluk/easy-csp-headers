@@ -47,6 +47,7 @@ defined( 'ABSPATH' ) || die();
 				<?php
 				settings_fields( 'ecsp_general' );
 				?>
+				<input type="hidden" name="ecsp_active_tab" class="ecsp-active-tab" value="general">
 				<table class="form-table">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Enable CSP Headers', 'easy-csp-headers' ); ?></th>
@@ -119,6 +120,7 @@ defined( 'ABSPATH' ) || die();
 				<?php
 				settings_fields( 'ecsp_rules' );
 				?>
+				<input type="hidden" name="ecsp_active_tab" class="ecsp-active-tab" value="csp-rules">
 				<table class="form-table">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Use Strict-Dynamic', 'easy-csp-headers' ); ?></th>
@@ -241,6 +243,7 @@ defined( 'ABSPATH' ) || die();
 				<?php
 				settings_fields( 'ecsp_exclusions' );
 				?>
+				<input type="hidden" name="ecsp_active_tab" class="ecsp-active-tab" value="exclusions">
 				<table class="form-table">
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Excluded Paths', 'easy-csp-headers' ); ?></th>

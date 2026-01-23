@@ -4,7 +4,7 @@ Tags: security, csp, content-security-policy, xss, headers
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,13 @@ Most modern themes and plugins work without modification. If you encounter issue
 
 == Changelog ==
 
+= 0.3.0 - 2026-01-23 =
+* Added Settings link on Plugins page for quick access
+* Fixed settings page to preserve active tab after saving
+* Tested with Autoptimize (asset aggregation/minification)
+* Tested with page caching plugins
+* Confirmed Grade A rating on securityheaders.com
+
 = 0.2.0 - 2026-01-23 =
 * Removed debug logging from production code
 * Full WordPress Coding Standards compliance
@@ -101,6 +108,9 @@ Most modern themes and plugins work without modification. If you encounter issue
 * WordPress Coding Standards compliant
 
 == Upgrade Notice ==
+
+= 0.3.0 =
+Improved UX with Settings link and tab preservation. Tested with asset optimization plugins.
 
 = 0.2.0 =
 Cleaned production code and added documentation. No functional changes.

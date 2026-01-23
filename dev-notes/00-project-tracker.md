@@ -1,9 +1,9 @@
 # Easy CSP Headers - Project Tracker
 
-**Version:** 0.2.0
+**Version:** 0.3.0
 **Last Updated:** 23 January 2026
 **Current Phase:** Milestone 5 (Exclusion System)
-**Overall Progress:** 70%
+**Overall Progress:** 75%
 
 ---
 
@@ -30,7 +30,17 @@ WordPress plugin that automatically generates and injects Content Security Polic
 **Completed:**
 - [x] Core plugin foundation and structure
 - [x] CSP processing engine with nonce generation
-- [x] Settings infrastructure and a✅ COMPLETE
+- [x] Settings infrastructure and admin interface
+- [x] WordPress Coding Standards compliance
+- [x] Documentation (README, readme.txt, CHANGELOG)
+- [x] Plugin action links and tab preservation UX improvements
+- [x] Tested with Autoptimize and page caching (Grade A on securityheaders.com)
+
+---
+
+## Milestones
+
+### Milestone 1: Plugin Foundation ✅ COMPLETE
 **Goal:** Basic plugin structure, constants, and file organization
 
 - [x] Create main plugin file (`easy-csp-headers.php`)

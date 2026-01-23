@@ -20,6 +20,32 @@ defined( 'ABSPATH' ) || die();
 class Settings {
 
 	/**
+	 * Preserve active tab on settings page redirect.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $location Redirect location.
+	 *
+	 * @return string Modified redirect location with tab hash.
+	 */
+	public function preserve_tab_on_redirect( string $location ): string {
+		// Only modify redirect for our settings page.
+		if ( strpos( $location, 'page=easy-csp-headers' ) === false ) {
+			return $location;
+		}
+
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Settings API handles nonce verification.
+		$active_tab = isset( $_POST['ecsp_active_tab'] ) ? sanitize_text_field( wp_unslash( $_POST['ecsp_active_tab'] ) ) : '';
+		// phpcs:enable
+
+		if ( ! empty( $active_tab ) ) {
+			$location .= '#' . $active_tab;
+		}
+
+		return $location;
+	}
+
+	/**
 	 * Register all settings with WordPress.
 	 *
 	 * @since 0.1.0

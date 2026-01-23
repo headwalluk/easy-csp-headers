@@ -3,7 +3,7 @@
  * Plugin Name: Easy CSP Headers
  * Plugin URI: https://headwall-hosting.com/easy-csp-headers
  * Description: Automatically generates and injects Content Security Policy (CSP) headers with nonces for enhanced security.
- * Version: 0.2.0
+ * Version: 0.3.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Paul Faulkner
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ECSP_VERSION', '0.1.0' );
+define( 'ECSP_VERSION', '0.3.0' );
 define( 'ECSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ECSP_URL', plugin_dir_url( __FILE__ ) );
 define( 'ECSP_BASENAME', plugin_basename( __FILE__ ) );

@@ -73,6 +73,9 @@ class Plugin {
 		add_action( 'admin_enqueue_scripts', array( $this->get_admin_hooks(), 'enqueue_admin_assets' ) );
 		add_filter( 'plugin_action_links_' . ECSP_BASENAME, array( $this->get_admin_hooks(), 'add_plugin_action_links' ) );
 
+		// Preserve active tab on settings save redirect.
+		add_filter( 'wp_redirect', array( $this->get_settings(), 'preserve_tab_on_redirect' ) );
+
 		// Start output buffering for CSP processing.
 		add_action( 'template_redirect', array( $this->get_output_buffer(), 'start_buffer' ) );
 	}

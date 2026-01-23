@@ -5,6 +5,20 @@ All notable changes to Easy CSP Headers will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-01-23
+
+### Added
+- Settings link on Plugins page for quick access to configuration
+- Tab preservation when saving settings - returns to active tab after save
+
+### Fixed
+- Settings page now maintains active tab state across form submissions
+
+### Tested
+- Verified compatibility with Autoptimize (asset aggregation/minification)
+- Verified compatibility with page caching plugins
+- Confirmed Grade A rating on securityheaders.com with strict CSP enforcement
+
 ## [0.2.0] - 2026-01-23
 
 ### Changed

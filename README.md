@@ -3,10 +3,10 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue.svg)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg?logo=php&logoColor=white)
 ![License](https://img.shields.io/badge/License-GPL%20v2%2B-green.svg)
-![Version](https://img.shields.io/badge/Version-0.3.0-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.0.0-orange.svg)
 ![Code Standards](https://img.shields.io/badge/Code%20Standards-WordPress-brightgreen.svg)
 
-**Version:** 0.3.0  
+**Version:** 1.0.0  
 **Author:** Paul Faulkner  
 **License:** GPL v2 or later
 
@@ -118,6 +118,27 @@ easy-csp-headers/
 │   ├── admin-styles.css
 │   └── admin-scripts.js
 └── dev-notes/                 # Development documentation
+```
+
+### Developer Hooks
+
+**Filter: `ecsp_should_skip_csp`**
+
+Allows developers to programmatically control when CSP processing is skipped.
+
+```php
+/**
+ * Skip CSP on custom post type single pages.
+ *
+ * @param bool $skip Whether to skip CSP processing.
+ * @return bool
+ */
+add_filter( 'ecsp_should_skip_csp', function( $skip ) {
+    if ( is_singular( 'my_custom_post_type' ) ) {
+        return true;
+    }
+    return $skip;
+} );
 ```
 
 ### Code Standards

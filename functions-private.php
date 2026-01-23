@@ -67,12 +67,45 @@ function should_skip_csp(): bool {
 		$result = true;
 	}
 
+	// Skip if current path is excluded.
+	if ( is_null( $result ) ) {
+		$excluded_paths = get_option( OPT_EXCLUDED_PATHS, DEF_EXCLUDED_PATHS );
+		if ( ! empty( $excluded_paths ) ) {
+			$paths        = array_filter( array_map( 'trim', explode( "\n", $excluded_paths ) ) );
+			$request_uri  = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+			$parsed_uri   = wp_parse_url( $request_uri );
+			$current_path = isset( $parsed_uri['path'] ) ? $parsed_uri['path'] : '';
+
+			foreach ( $paths as $pattern ) {
+				// Exact match.
+				if ( $pattern === $current_path ) {
+					$result = true;
+					break;
+				}
+
+				// Wildcard support: /checkout/* matches /checkout/anything.
+				if ( str_ends_with( $pattern, '*' ) ) {
+					$prefix = rtrim( $pattern, '*' );
+					if ( str_starts_with( $current_path, $prefix ) ) {
+						$result = true;
+						break;
+					}
+				}
+			}
+		}
+	}
+
 	// Default: Don't skip.
 	if ( is_null( $result ) ) {
 		$result = false;
 	}
 
-	// TODO: Apply a filter here to allow other code to modify the skip decision.
-
-	return $result;
+	/**
+	 * Filter whether CSP processing should be skipped for the current request.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param bool $result Whether to skip CSP processing.
+	 */
+	return (bool) apply_filters( 'ecsp_should_skip_csp', $result );
 }

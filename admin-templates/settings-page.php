@@ -332,6 +332,39 @@ defined( 'ABSPATH' ) || die();
 				);
 				?>
 			</p>
+
+			<h2><?php esc_html_e( 'Path Exclusions', 'easy-csp-headers' ); ?></h2>
+			<p>
+				<?php
+				esc_html_e(
+					'You can exclude specific paths from CSP processing using exact matches or wildcard patterns:',
+					'easy-csp-headers'
+				);
+				?>
+			</p>
+			<ul>
+				<li><strong><?php esc_html_e( 'Exact match:', 'easy-csp-headers' ); ?></strong> <code>/checkout/</code> <?php esc_html_e( '- Only matches exactly /checkout/', 'easy-csp-headers' ); ?></li>
+				<li><strong><?php esc_html_e( 'Wildcard:', 'easy-csp-headers' ); ?></strong> <code>/checkout/*</code> <?php esc_html_e( '- Matches /checkout/ and all subpages', 'easy-csp-headers' ); ?></li>
+				<li><strong><?php esc_html_e( 'Example:', 'easy-csp-headers' ); ?></strong> <code>/wp-admin/*</code> <?php esc_html_e( '- Exclude entire admin area', 'easy-csp-headers' ); ?></li>
+			</ul>
+
+			<h2><?php esc_html_e( 'Developer Hooks', 'easy-csp-headers' ); ?></h2>
+			<p>
+				<?php
+				esc_html_e(
+					'Developers can programmatically control CSP processing using the ecsp_should_skip_csp filter:',
+					'easy-csp-headers'
+				);
+				?>
+			</p>
+			<pre style="background: #f5f5f5; padding: 10px; border: 1px solid #ddd; overflow-x: auto;">
+add_filter( 'ecsp_should_skip_csp', function( $skip ) {
+	if ( is_singular( 'my_custom_post_type' ) ) {
+		return true;
+	}
+	return $skip;
+} );
+</pre>
 		</div>
 	</div>
 </div>

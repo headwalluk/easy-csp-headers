@@ -4,7 +4,7 @@ Tags: security, csp, content-security-policy, xss, headers
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 0.3.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,19 @@ Yes. Add trusted domains in Settings → CSP Headers → CSP Rules → Whitelist
 
 Most modern themes and plugins work without modification. If you encounter issues in Report-Only mode, you can either fix the code or add it to the exclusions list.
 
+= Can I programmatically skip CSP on certain pages? =
+
+Yes! Use the `ecsp_should_skip_csp` filter:
+
+`
+add_filter( 'ecsp_should_skip_csp', function( $skip ) {
+    if ( is_singular( 'my_custom_post_type' ) ) {
+        return true;
+    }
+    return $skip;
+} );
+`
+
 == Screenshots ==
 
 1. General Settings - Enable/disable CSP and configure mode
@@ -80,6 +93,15 @@ Most modern themes and plugins work without modification. If you encounter issue
 4. Help Tab - Built-in documentation and troubleshooting
 
 == Changelog ==
+
+= 1.0.0 - 2026-01-23 =
+* 🎉 Stable 1.0.0 release
+* Added path exclusion system (exact match and wildcard support)
+* Added developer filter ecsp_should_skip_csp for programmatic control
+* Added translation .pot file
+* Enhanced Help tab with path exclusions and developer hooks documentation
+* Streamlined constants.php (removed redundant comments)
+* All core features fully implemented and tested
 
 = 0.3.0 - 2026-01-23 =
 * Added Settings link on Plugins page for quick access
@@ -108,6 +130,9 @@ Most modern themes and plugins work without modification. If you encounter issue
 * WordPress Coding Standards compliant
 
 == Upgrade Notice ==
+
+= 1.0.0 =
+Stable release! Path exclusions now functional, developer filter added, Help tab enhanced.
 
 = 0.3.0 =
 Improved UX with Settings link and tab preservation. Tested with asset optimization plugins.

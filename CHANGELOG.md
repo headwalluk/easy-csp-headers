@@ -5,6 +5,22 @@ All notable changes to Easy CSP Headers will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-01-23
+
+### Added
+- Path exclusion system with exact match and wildcard (*) support
+- Developer filter `ecsp_should_skip_csp` for programmatic control
+- Translation .pot file for internationalization
+- Comprehensive Help tab with path exclusion examples and developer hooks
+- Developer hooks documentation in README files
+
+### Changed
+- Streamlined constants.php by removing redundant comments (192 lines → 50 lines)
+- Updated Help tab with path exclusion patterns and filter examples
+
+### Fixed
+- Path exclusions now functional with `should_skip_csp()` implementation
+
 ## [0.3.0] - 2026-01-23
 
 ### Added

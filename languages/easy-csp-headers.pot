@@ -1,0 +1,241 @@
+# Copyright (C) 2026 Paul Faulkner
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Easy CSP Headers 0.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-csp-headers\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-01-23T20:26:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: easy-csp-headers\n"
+
+#. Plugin Name of the plugin
+#: easy-csp-headers.php
+#: includes/class-admin-hooks.php:52
+msgid "Easy CSP Headers"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: easy-csp-headers.php
+msgid "https://headwall-hosting.com/easy-csp-headers"
+msgstr ""
+
+#. Description of the plugin
+#: easy-csp-headers.php
+msgid "Automatically generates and injects Content Security Policy (CSP) headers with nonces for enhanced security."
+msgstr ""
+
+#. Author of the plugin
+#: easy-csp-headers.php
+msgid "Paul Faulkner"
+msgstr ""
+
+#. Author URI of the plugin
+#: easy-csp-headers.php
+msgid "https://headwall-hosting.com/"
+msgstr ""
+
+#: admin-templates/settings-page.php:26
+msgid "General"
+msgstr ""
+
+#: admin-templates/settings-page.php:30
+msgid "CSP Rules"
+msgstr ""
+
+#: admin-templates/settings-page.php:34
+msgid "Exclusions"
+msgstr ""
+
+#: admin-templates/settings-page.php:38
+msgid "Help"
+msgstr ""
+
+#: admin-templates/settings-page.php:53
+msgid "Enable CSP Headers"
+msgstr ""
+
+#: admin-templates/settings-page.php:61
+msgid "Enable Content Security Policy processing"
+msgstr ""
+
+#: admin-templates/settings-page.php:65
+msgid "Master switch to enable or disable CSP header injection."
+msgstr ""
+
+#: admin-templates/settings-page.php:70
+msgid "CSP Mode"
+msgstr ""
+
+#: admin-templates/settings-page.php:78
+msgid "Report-Only (violations logged, not blocked)"
+msgstr ""
+
+#: admin-templates/settings-page.php:84
+msgid "Enforce (violations blocked)"
+msgstr ""
+
+#: admin-templates/settings-page.php:88
+msgid "Start with Report-Only mode to test without breaking your site."
+msgstr ""
+
+#: admin-templates/settings-page.php:93
+msgid "Enable for Logged-in Users"
+msgstr ""
+
+#: admin-templates/settings-page.php:104
+msgid "Apply CSP headers when users are logged in"
+msgstr ""
+
+#: admin-templates/settings-page.php:108
+msgid "By default, CSP is disabled for logged-in users. Enable this to test while authenticated."
+msgstr ""
+
+#: admin-templates/settings-page.php:126
+msgid "Use Strict-Dynamic"
+msgstr ""
+
+#: admin-templates/settings-page.php:137
+msgid "Use 'strict-dynamic' in script-src directive"
+msgstr ""
+
+#: admin-templates/settings-page.php:141
+msgid "Recommended for best security. Allows scripts loaded by trusted scripts."
+msgstr ""
+
+#: admin-templates/settings-page.php:146
+msgid "Use Unsafe-Hashes"
+msgstr ""
+
+#: admin-templates/settings-page.php:157
+msgid "Allow inline event handlers with 'unsafe-hashes'"
+msgstr ""
+
+#: admin-templates/settings-page.php:161
+msgid "Less secure. Allows onclick, onload, etc. Use only if needed for legacy code."
+msgstr ""
+
+#: admin-templates/settings-page.php:166
+msgid "Process Styles"
+msgstr ""
+
+#: admin-templates/settings-page.php:177
+msgid "Add nonces to <style> tags and include style-src directive"
+msgstr ""
+
+#: admin-templates/settings-page.php:181
+msgid "Enable if you want to restrict inline styles as well as scripts."
+msgstr ""
+
+#: admin-templates/settings-page.php:186
+msgid "Whitelisted Domains"
+msgstr ""
+
+#: admin-templates/settings-page.php:197
+msgid "Add trusted domains (one per line). Example: https://cdn.example.com"
+msgstr ""
+
+#: admin-templates/settings-page.php:202
+msgid "Custom CSP Directives"
+msgstr ""
+
+#: admin-templates/settings-page.php:214
+msgid "Add custom CSP directives (one per line). Example: img-src * data:"
+msgstr ""
+
+#: admin-templates/settings-page.php:220
+msgid "Report URI"
+msgstr ""
+
+#: admin-templates/settings-page.php:231
+msgid "URL where CSP violation reports should be sent."
+msgstr ""
+
+#: admin-templates/settings-page.php:249
+msgid "Excluded Paths"
+msgstr ""
+
+#: admin-templates/settings-page.php:261
+msgid "Paths to exclude from CSP processing (one per line). Examples:"
+msgstr ""
+
+#: admin-templates/settings-page.php:277
+msgid "What is Content Security Policy (CSP)?"
+msgstr ""
+
+#: admin-templates/settings-page.php:280
+msgid "Content Security Policy is a security feature that helps prevent cross-site scripting (XSS) attacks by controlling which resources can be loaded and executed on your website."
+msgstr ""
+
+#: admin-templates/settings-page.php:287
+msgid "How Nonces Work"
+msgstr ""
+
+#: admin-templates/settings-page.php:290
+msgid "This plugin generates a unique nonce (random value) for each page load and adds it to all script and style tags. The same nonce is included in the CSP header, allowing only scripts with matching nonces to execute."
+msgstr ""
+
+#: admin-templates/settings-page.php:297
+msgid "Getting Started"
+msgstr ""
+
+#: admin-templates/settings-page.php:299
+msgid "Start with \"Report-Only\" mode to test without breaking your site"
+msgstr ""
+
+#: admin-templates/settings-page.php:300
+msgid "Check your browser console for CSP violation reports"
+msgstr ""
+
+#: admin-templates/settings-page.php:301
+msgid "Add trusted domains to the whitelist if needed"
+msgstr ""
+
+#: admin-templates/settings-page.php:302
+msgid "Once satisfied, switch to \"Enforce\" mode"
+msgstr ""
+
+#: admin-templates/settings-page.php:305
+msgid "Common Issues"
+msgstr ""
+
+#: admin-templates/settings-page.php:306
+msgid "Inline Event Handlers"
+msgstr ""
+
+#: admin-templates/settings-page.php:309
+msgid "Inline event handlers like onclick=\"...\" will be blocked by strict CSP. These should be updated to use addEventListener() instead."
+msgstr ""
+
+#: admin-templates/settings-page.php:316
+msgid "External Scripts"
+msgstr ""
+
+#: admin-templates/settings-page.php:319
+msgid "With strict-dynamic enabled, external scripts loaded by trusted scripts will automatically be allowed. You can also add specific domains to the whitelist."
+msgstr ""
+
+#: admin-templates/settings-page.php:326
+msgid "Caching"
+msgstr ""
+
+#: admin-templates/settings-page.php:329
+msgid "This plugin works with page caching. The nonce is generated when the cache is built and remains consistent until the cache is cleared."
+msgstr ""
+
+#: includes/class-admin-hooks.php:35
+msgid "Settings"
+msgstr ""
+
+#: includes/class-admin-hooks.php:53
+msgid "CSP Headers"
+msgstr ""
+
+#: includes/class-admin-hooks.php:100
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""

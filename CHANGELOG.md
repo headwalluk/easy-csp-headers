@@ -5,6 +5,31 @@ All notable changes to Easy CSP Headers will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [1.1.0] - 2026-01-29
+
+### Added
+- GitHub Actions workflow for automated release packaging
+- Admin notices for cache clearing after settings save
+- Admin bar notifications for CSP status (disabled/report-only mode)
+- Comprehensive admin notices for CSP status across all admin pages
+- Enhanced Help tab with detailed mode explanations and step-by-step guide
+- Test CSP Headers button with AJAX functionality to verify header injection
+- Admin templates refactored to code-first architecture with separate tab files
+
+### Changed
+- Consolidated all settings into single form to prevent duplicate save notices
+- Improved Help tab with clearer CSP mode explanations and cache clearing reminders
+- Updated `.gitignore` to exclude build artifacts (`dist/`, `*.zip`)
+- Refactored settings-page.php from 406 lines to 57 lines (86% reduction)
+- Split admin templates into modular tab files for better maintainability
+- All templates now use printf/echo pattern instead of inline HTML
+
+### Fixed
+- Removed duplicate "Settings saved" notices on settings page
+- Settings form now properly unified across all tabs
+
 ## [1.0.0] - 2026-01-23
 
 ### Added

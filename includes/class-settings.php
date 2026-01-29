@@ -53,9 +53,9 @@ class Settings {
 	 * @return void
 	 */
 	public function register_settings(): void {
-		// General settings.
+		// All settings use single group to prevent duplicate save notices.
 		register_setting(
-			'ecsp_general',
+			'ecsp_settings',
 			OPT_ENABLED,
 			array(
 				'type'              => 'boolean',
@@ -65,7 +65,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_general',
+			'ecsp_settings',
 			OPT_MODE,
 			array(
 				'type'              => 'string',
@@ -75,7 +75,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_general',
+			'ecsp_settings',
 			OPT_ENABLE_FOR_LOGGED_IN,
 			array(
 				'type'              => 'boolean',
@@ -84,9 +84,8 @@ class Settings {
 			)
 		);
 
-		// CSP Rules settings.
 		register_setting(
-			'ecsp_rules',
+			'ecsp_settings',
 			OPT_USE_STRICT_DYNAMIC,
 			array(
 				'type'              => 'boolean',
@@ -96,7 +95,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_rules',
+			'ecsp_settings',
 			OPT_USE_UNSAFE_HASHES,
 			array(
 				'type'              => 'boolean',
@@ -106,7 +105,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_rules',
+			'ecsp_settings',
 			OPT_PROCESS_STYLES,
 			array(
 				'type'              => 'boolean',
@@ -116,7 +115,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_rules',
+			'ecsp_settings',
 			OPT_CUSTOM_DIRECTIVES,
 			array(
 				'type'              => 'string',
@@ -126,7 +125,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_rules',
+			'ecsp_settings',
 			OPT_REPORT_URI,
 			array(
 				'type'              => 'string',
@@ -136,7 +135,7 @@ class Settings {
 		);
 
 		register_setting(
-			'ecsp_rules',
+			'ecsp_settings',
 			OPT_WHITELISTED_DOMAINS,
 			array(
 				'type'              => 'string',
@@ -145,9 +144,8 @@ class Settings {
 			)
 		);
 
-		// Exclusions settings.
 		register_setting(
-			'ecsp_exclusions',
+			'ecsp_settings',
 			OPT_EXCLUDED_PATHS,
 			array(
 				'type'              => 'string',

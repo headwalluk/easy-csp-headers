@@ -1,7 +1,7 @@
 # Easy CSP Headers - Project Tracker
 
-**Version:** 1.0.0
-**Last Updated:** 23 January 2026
+**Version:** 1.1.0
+**Last Updated:** 29 January 2026
 **Current Phase:** Stable Release
 **Overall Progress:** 100% (Core Features Complete)
 
@@ -300,14 +300,75 @@ All core features complete and production-ready.
 
 ---
 
-## Technical Debt
+## Milestone 11: Pre-Release Polish 🎯 IN PROGRESS
+**Goal:** Final polish and version consistency for 1.0.0 release
 
-**Future Enhancements:**
-- Consider support for inline event handler migration (onclick → addEventListener)
-- Add CSP violation reporting endpoint (store reports in custom table)
-- Add dashboard widget showing CSP violations
-- Support for multiple CSP policies (different rules per post type)
-- Integration with security plugins
+### Version Consistency & Release Prep
+- [x] Verify version numbers match across all files
+  - [x] `easy-csp-headers.php` header (Version: 1.0.0)
+  - [x] `easy-csp-headers.php` ECSP_VERSION constant (1.0.0)
+  - [x] `readme.txt` Stable tag (1.0.0)
+  - [x] `README.md` version badge (1.0.0)
+  - [x] `CHANGELOG.md` latest entry (1.0.0 - 2026-01-23)
+- [x] Update CHANGELOG.md with all recent changes
+- [ ] Test GitHub Actions release workflow
+
+### Admin UI Enhancements
+- [x] Add visual status indicator on General tab
+  - [x] Green checkmark icon when Enforce mode active
+  - [x] Blue info icon when Report-Only mode active
+  - [x] Red warning when disabled
+- [x] Add "Test CSP Headers" button
+  - [x] Makes wp_remote_get() request to homepage
+  - [x] Displays detected CSP headers with formatting
+  - [x] Shows helpful error messages if no headers found
+- [ ] Add client-side field validation
+  - [ ] Validate URL format for Report URI
+  - [ ] Validate path patterns in exclusions
+  - [ ] Show inline error messages before submit
+
+### Documentation Improvements
+- [x] Expand Help tab with common scenarios
+  - [ ] WooCommerce compatibility notes (deferred to Phase 2)
+  - [ ] Contact Form 7 considerations (deferred to Phase 2)
+  - [ ] Page builder compatibility (Elementor, etc.) (deferred to Phase 2)
+- [x] Add troubleshooting section
+  - [x] "My site is broken" emergency steps
+  - [x] How to quickly disable CSP
+  - [x] Browser console interpretation guide
+- [x] Add developer examples to Help tab
+  - [x] Using `ecsp_should_skip_csp` filter
+  - [x] Programmatically enabling/disabling CSP (via settings)
+  - [x] Path exclusion examples with wildcards
+
+### Performance Audit
+- [x] Review settings retrieval pattern
+  - [x] Cache settings in class properties if called multiple times
+  - [x] Minimize get_option() calls on frontend (only called once per page load)
+- [x] Profile HTML processing performance
+  - [x] Test with large HTML documents (WP_HTML_Tag_Processor is efficient)
+  - [x] Verify no N+1 issues in tag processing (single pass through HTML)
+- [x] Check admin page performance
+  - [x] Minimize asset size
+  - [x] Ensure conditional loading works (only loads on plugin settings page)
+
+### Code Quality Final Check
+- [x] Run full phpcs check (all files pass)
+- [x] Review all @since tags for accuracy (0.x versions retained for historical accuracy)
+- [x] Verify all translatable strings use text domain (all use 'easy-csp-headers')
+- [x] Check for any TODO/FIXME comments (none found)
+- [x] Remove any debug/development code (none found)
+
+### Template Refactoring
+- [x] Refactor admin templates from HTML-first to code-first
+  - [x] Extract tabs into separate files (general-tab.php, csp-rules-tab.php, exclusions-tab.php, help-tab.php)
+  - [x] Refactor settings-page.php to lean structure (406 lines → 57 lines)
+  - [x] Convert all tab files to printf/echo pattern
+  - [x] Add helpful closing comments to all wrappers
+  - [x] Verify all templates pass phpcs standards
+
+---
+
 - WP-CLI commands for testing CSP rules
 
 **Known Limitations:**

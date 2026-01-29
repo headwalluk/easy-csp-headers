@@ -3,10 +3,10 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue.svg)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg?logo=php&logoColor=white)
 ![License](https://img.shields.io/badge/License-GPL%20v2%2B-green.svg)
-![Version](https://img.shields.io/badge/Version-1.0.0-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg)
 ![Code Standards](https://img.shields.io/badge/Code%20Standards-WordPress-brightgreen.svg)
 
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Author:** Paul Faulkner  
 **License:** GPL v2 or later
 

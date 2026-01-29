@@ -1,0 +1,55 @@
+name: Build plugin zips on release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare variables
+        shell: bash
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          VERSION="${TAG#v}"   # strip leading 'v' if present
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "SLUG=easy-csp-headers" >> "$GITHUB_ENV"
+
+      - name: Create dist folder
+        run: mkdir -p dist/${{ env.SLUG }}
+
+      - name: Copy plugin files (excluding specified paths/files)
+        shell: bash
+        run: |
+          rsync -av --delete \
+            --exclude 'dist/' \
+            --exclude 'dev-notes/' \
+            --exclude 'build/' \
+            --exclude 'CHANGELOG.md' \
+            --exclude 'README.md' \
+            ./ dist/${{ env.SLUG }}
+
+      - name: Create zips
+        shell: bash
+        run: |
+          cd dist
+          zip -r "${{ env.SLUG }}-${{ env.VERSION }}.zip" "${{ env.SLUG }}"
+          zip -r "${{ env.SLUG }}.zip" "${{ env.SLUG }}"
+          ls -lh
+
+      - name: Upload assets to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/${{ env.SLUG }}-${{ env.VERSION }}.zip
+            dist/${{ env.SLUG }}.zip
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

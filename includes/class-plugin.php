@@ -73,6 +73,14 @@ class Plugin {
 		add_action( 'admin_enqueue_scripts', array( $this->get_admin_hooks(), 'enqueue_admin_assets' ) );
 		add_filter( 'plugin_action_links_' . ECSP_BASENAME, array( $this->get_admin_hooks(), 'add_plugin_action_links' ) );
 
+		// Admin notices.
+		add_action( 'admin_notices', array( $this->get_admin_hooks(), 'show_settings_saved_notice' ) );
+		add_action( 'admin_notices', array( $this->get_admin_hooks(), 'show_csp_status_notices' ) );
+		add_action( 'admin_bar_menu', array( $this->get_admin_hooks(), 'add_admin_bar_notices' ), 100 );
+
+		// AJAX handlers.
+		add_action( 'wp_ajax_ecsp_test_headers', array( $this->get_admin_hooks(), 'ajax_test_csp_headers' ) );
+
 		// Preserve active tab on settings save redirect.
 		add_filter( 'wp_redirect', array( $this->get_settings(), 'preserve_tab_on_redirect' ) );
 

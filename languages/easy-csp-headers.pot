@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy CSP Headers 0.3.0\n"
+"Project-Id-Version: Easy CSP Headers 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-csp-headers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-23T20:26:50+00:00\n"
+"POT-Creation-Date: 2026-01-29T20:24:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: easy-csp-headers\n"
@@ -22,12 +22,12 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: easy-csp-headers.php
-msgid "https://headwall-hosting.com/easy-csp-headers"
+msgid "https://headwall-hosting.com/plugins/easy-csp-headers"
 msgstr ""
 
 #. Description of the plugin
 #: easy-csp-headers.php
-msgid "Automatically generates and injects Content Security Policy (CSP) headers with nonces for enhanced security."
+msgid "Automatically generate and inject Content Security Policy (CSP) headers with nonces for enhanced security."
 msgstr ""
 
 #. Author of the plugin
@@ -40,192 +40,316 @@ msgstr ""
 msgid "https://headwall-hosting.com/"
 msgstr ""
 
-#: admin-templates/settings-page.php:26
+#: admin-templates/settings-page.php:23
 msgid "General"
 msgstr ""
 
-#: admin-templates/settings-page.php:30
+#: admin-templates/settings-page.php:27
 msgid "CSP Rules"
 msgstr ""
 
-#: admin-templates/settings-page.php:34
+#: admin-templates/settings-page.php:31
 msgid "Exclusions"
 msgstr ""
 
-#: admin-templates/settings-page.php:38
+#: admin-templates/settings-page.php:35
 msgid "Help"
 msgstr ""
 
-#: admin-templates/settings-page.php:53
-msgid "Enable CSP Headers"
-msgstr ""
-
-#: admin-templates/settings-page.php:61
-msgid "Enable Content Security Policy processing"
-msgstr ""
-
-#: admin-templates/settings-page.php:65
-msgid "Master switch to enable or disable CSP header injection."
-msgstr ""
-
-#: admin-templates/settings-page.php:70
-msgid "CSP Mode"
-msgstr ""
-
-#: admin-templates/settings-page.php:78
-msgid "Report-Only (violations logged, not blocked)"
-msgstr ""
-
-#: admin-templates/settings-page.php:84
-msgid "Enforce (violations blocked)"
-msgstr ""
-
-#: admin-templates/settings-page.php:88
-msgid "Start with Report-Only mode to test without breaking your site."
-msgstr ""
-
-#: admin-templates/settings-page.php:93
-msgid "Enable for Logged-in Users"
-msgstr ""
-
-#: admin-templates/settings-page.php:104
-msgid "Apply CSP headers when users are logged in"
-msgstr ""
-
-#: admin-templates/settings-page.php:108
-msgid "By default, CSP is disabled for logged-in users. Enable this to test while authenticated."
-msgstr ""
-
-#: admin-templates/settings-page.php:126
+#: admin-templates/tabs/csp-rules-tab.php:22
 msgid "Use Strict-Dynamic"
 msgstr ""
 
-#: admin-templates/settings-page.php:137
+#: admin-templates/tabs/csp-rules-tab.php:32
 msgid "Use 'strict-dynamic' in script-src directive"
 msgstr ""
 
-#: admin-templates/settings-page.php:141
+#: admin-templates/tabs/csp-rules-tab.php:36
 msgid "Recommended for best security. Allows scripts loaded by trusted scripts."
 msgstr ""
 
-#: admin-templates/settings-page.php:146
+#: admin-templates/tabs/csp-rules-tab.php:43
 msgid "Use Unsafe-Hashes"
 msgstr ""
 
-#: admin-templates/settings-page.php:157
+#: admin-templates/tabs/csp-rules-tab.php:53
 msgid "Allow inline event handlers with 'unsafe-hashes'"
 msgstr ""
 
-#: admin-templates/settings-page.php:161
+#: admin-templates/tabs/csp-rules-tab.php:57
 msgid "Less secure. Allows onclick, onload, etc. Use only if needed for legacy code."
 msgstr ""
 
-#: admin-templates/settings-page.php:166
+#: admin-templates/tabs/csp-rules-tab.php:64
 msgid "Process Styles"
 msgstr ""
 
-#: admin-templates/settings-page.php:177
+#: admin-templates/tabs/csp-rules-tab.php:74
 msgid "Add nonces to <style> tags and include style-src directive"
 msgstr ""
 
-#: admin-templates/settings-page.php:181
+#: admin-templates/tabs/csp-rules-tab.php:78
 msgid "Enable if you want to restrict inline styles as well as scripts."
 msgstr ""
 
-#: admin-templates/settings-page.php:186
+#: admin-templates/tabs/csp-rules-tab.php:85
 msgid "Whitelisted Domains"
 msgstr ""
 
-#: admin-templates/settings-page.php:197
+#: admin-templates/tabs/csp-rules-tab.php:95
 msgid "Add trusted domains (one per line). Example: https://cdn.example.com"
 msgstr ""
 
-#: admin-templates/settings-page.php:202
+#: admin-templates/tabs/csp-rules-tab.php:102
 msgid "Custom CSP Directives"
 msgstr ""
 
-#: admin-templates/settings-page.php:214
+#: admin-templates/tabs/csp-rules-tab.php:112
 msgid "Add custom CSP directives (one per line). Example: img-src * data:"
 msgstr ""
 
-#: admin-templates/settings-page.php:220
+#: admin-templates/tabs/csp-rules-tab.php:119
 msgid "Report URI"
 msgstr ""
 
-#: admin-templates/settings-page.php:231
+#: admin-templates/tabs/csp-rules-tab.php:129
 msgid "URL where CSP violation reports should be sent."
 msgstr ""
 
-#: admin-templates/settings-page.php:249
+#: admin-templates/tabs/exclusions-tab.php:22
 msgid "Excluded Paths"
 msgstr ""
 
-#: admin-templates/settings-page.php:261
+#: admin-templates/tabs/exclusions-tab.php:32
 msgid "Paths to exclude from CSP processing (one per line). Examples:"
 msgstr ""
 
-#: admin-templates/settings-page.php:277
+#: admin-templates/tabs/general-tab.php:23
+#: admin-templates/tabs/help-tab.php:53
+#: includes/class-admin-hooks.php:149
+msgid "Enable CSP Headers"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:30
+msgid "Enable Content Security Policy processing"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:34
+msgid "Master switch to enable or disable CSP header injection."
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:41
+msgid "CSP Mode"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:48
+msgid "Report-Only (violations logged, not blocked)"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:54
+msgid "Enforce (violations blocked)"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:58
+msgid "Start with Report-Only mode to test without breaking your site."
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:65
+msgid "Enable for Logged-in Users"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:75
+msgid "Apply CSP headers when users are logged in"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:79
+msgid "By default, CSP is disabled for logged-in users. Enable this to test while authenticated."
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:87
+#: admin-templates/tabs/general-tab.php:91
+msgid "Test CSP Headers"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:88
+msgid "Verify that CSP headers are being sent correctly by your server."
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:16
 msgid "What is Content Security Policy (CSP)?"
 msgstr ""
 
-#: admin-templates/settings-page.php:280
+#: admin-templates/tabs/help-tab.php:19
 msgid "Content Security Policy is a security feature that helps prevent cross-site scripting (XSS) attacks by controlling which resources can be loaded and executed on your website."
 msgstr ""
 
-#: admin-templates/settings-page.php:287
+#: admin-templates/tabs/help-tab.php:23
 msgid "How Nonces Work"
 msgstr ""
 
-#: admin-templates/settings-page.php:290
+#: admin-templates/tabs/help-tab.php:26
 msgid "This plugin generates a unique nonce (random value) for each page load and adds it to all script and style tags. The same nonce is included in the CSP header, allowing only scripts with matching nonces to execute."
 msgstr ""
 
-#: admin-templates/settings-page.php:297
-msgid "Getting Started"
+#: admin-templates/tabs/help-tab.php:30
+msgid "Understanding CSP Modes"
 msgstr ""
 
-#: admin-templates/settings-page.php:299
-msgid "Start with \"Report-Only\" mode to test without breaking your site"
+#: admin-templates/tabs/help-tab.php:31
+msgid "Report-Only Mode"
 msgstr ""
 
-#: admin-templates/settings-page.php:300
-msgid "Check your browser console for CSP violation reports"
+#: admin-templates/tabs/help-tab.php:34
+msgid "In Report-Only mode, CSP violations are logged to the browser console but NOT blocked. This is the safe way to test CSP without breaking your site. Use this mode to identify issues before enforcing the policy."
 msgstr ""
 
-#: admin-templates/settings-page.php:301
-msgid "Add trusted domains to the whitelist if needed"
+#: admin-templates/tabs/help-tab.php:38
+#: includes/class-admin-hooks.php:122
+msgid "Important:"
 msgstr ""
 
-#: admin-templates/settings-page.php:302
-msgid "Once satisfied, switch to \"Enforce\" mode"
+#: admin-templates/tabs/help-tab.php:39
+msgid "Report-Only mode does NOT provide security protection. It only logs violations. You must switch to Enforce mode to actually block malicious scripts."
 msgstr ""
 
-#: admin-templates/settings-page.php:305
+#: admin-templates/tabs/help-tab.php:42
+msgid "Enforce Mode"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:45
+msgid "In Enforce mode, CSP violations are actively blocked by the browser. This provides full security protection but may break functionality if CSP rules are too strict. Always test in Report-Only mode first."
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:49
+msgid "Getting Started - Step by Step"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:54
+msgid "Turn on the master toggle in the General tab"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:58
+msgid "Start with Report-Only mode"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:59
+msgid "This will log violations without breaking your site"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:63
+msgid "Clear your cache"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:64
+msgid "If using a caching plugin, clear it now"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:68
+msgid "Check browser console"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:69
+msgid "Visit your site and open Developer Tools (F12) to see CSP violation reports"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:73
+msgid "Fix violations"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:74
+msgid "Add trusted domains to the whitelist or exclude problematic pages"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:78
+msgid "Switch to Enforce mode"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:79
+msgid "Once no violations appear, change CSP Mode to \"Enforce\" for full protection"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:83
+msgid "Clear cache again"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:84
+msgid "Always clear your cache after changing settings"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:89
 msgid "Common Issues"
 msgstr ""
 
-#: admin-templates/settings-page.php:306
+#: admin-templates/tabs/help-tab.php:90
 msgid "Inline Event Handlers"
 msgstr ""
 
-#: admin-templates/settings-page.php:309
+#: admin-templates/tabs/help-tab.php:93
 msgid "Inline event handlers like onclick=\"...\" will be blocked by strict CSP. These should be updated to use addEventListener() instead."
 msgstr ""
 
-#: admin-templates/settings-page.php:316
+#: admin-templates/tabs/help-tab.php:96
 msgid "External Scripts"
 msgstr ""
 
-#: admin-templates/settings-page.php:319
+#: admin-templates/tabs/help-tab.php:99
 msgid "With strict-dynamic enabled, external scripts loaded by trusted scripts will automatically be allowed. You can also add specific domains to the whitelist."
 msgstr ""
 
-#: admin-templates/settings-page.php:326
+#: admin-templates/tabs/help-tab.php:102
 msgid "Caching"
 msgstr ""
 
-#: admin-templates/settings-page.php:329
-msgid "This plugin works with page caching. The nonce is generated when the cache is built and remains consistent until the cache is cleared."
+#: admin-templates/tabs/help-tab.php:105
+msgid "This plugin works with page caching plugins. The nonce is generated when the cache is built and remains consistent until the cache is cleared."
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:109
+msgid "Critical:"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:110
+msgid "After changing ANY setting on this page, you MUST clear your page cache for the changes to take effect. If you do not see changes, check your admin bar for CSP status notifications."
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:114
+msgid "Path Exclusions"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:117
+msgid "You can exclude specific paths from CSP processing using exact matches or wildcard patterns:"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:122
+msgid "Exact match:"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:123
+msgid "- Only matches exactly /checkout/"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:127
+msgid "Wildcard:"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:128
+msgid "- Matches /checkout/ and all subpages"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:132
+msgid "Example:"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:133
+msgid "- Exclude entire admin area"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:138
+msgid "Developer Hooks"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:141
+msgid "Developers can programmatically control CSP processing using the ecsp_should_skip_csp filter:"
 msgstr ""
 
 #: includes/class-admin-hooks.php:35
@@ -236,6 +360,53 @@ msgstr ""
 msgid "CSP Headers"
 msgstr ""
 
-#: includes/class-admin-hooks.php:100
+#: includes/class-admin-hooks.php:123
+msgid "If you use a page caching plugin, clear your cache now for the new CSP settings to take effect."
+msgstr ""
+
+#: includes/class-admin-hooks.php:146
+#: includes/class-admin-hooks.php:158
+msgid "CSP Headers:"
+msgstr ""
+
+#: includes/class-admin-hooks.php:147
+msgid "Content Security Policy headers are currently disabled."
+msgstr ""
+
+#: includes/class-admin-hooks.php:159
+msgid "CSP is in Report-Only mode and NOT providing security protection. Violations are logged but not blocked."
+msgstr ""
+
+#: includes/class-admin-hooks.php:161
+msgid "Switch to Enforce Mode"
+msgstr ""
+
+#: includes/class-admin-hooks.php:190
+msgid "CSP Headers Disabled"
+msgstr ""
+
+#: includes/class-admin-hooks.php:194
+msgid "Click to enable CSP Headers"
+msgstr ""
+
+#: includes/class-admin-hooks.php:208
+msgid "CSP: Report-Only Mode"
+msgstr ""
+
+#: includes/class-admin-hooks.php:212
+msgid "Switch to Enforce mode for full protection"
+msgstr ""
+
+#: includes/class-admin-hooks.php:230
+msgid "Insufficient permissions."
+msgstr ""
+
+#. translators: %s: Error message
+#: includes/class-admin-hooks.php:251
+#, php-format
+msgid "Request failed: %s"
+msgstr ""
+
+#: includes/class-admin-hooks.php:286
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""

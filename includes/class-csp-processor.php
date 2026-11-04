@@ -20,6 +20,20 @@ defined( 'ABSPATH' ) || die();
 class CSP_Processor {
 
 	/**
+	 * Nonce for the current request, generated on first use.
+	 *
+	 * @var string|null
+	 */
+	private ?string $nonce = null;
+
+	/**
+	 * Whether the CSP header has already been sent for this request.
+	 *
+	 * @var bool
+	 */
+	private bool $header_sent = false;
+
+	/**
 	 * Process HTML output and inject CSP.
 	 *
 	 * Main entry point for CSP processing. Generates nonce, modifies HTML,
@@ -46,7 +60,7 @@ class CSP_Processor {
 
 		// Process HTML and inject CSP.
 		if ( is_null( $result ) ) {
-			$nonce = $this->generate_nonce();
+			$nonce = $this->get_nonce();
 			$tags  = new \WP_HTML_Tag_Processor( $html );
 
 			$this->add_nonce_to_scripts( $tags, $nonce );
@@ -66,6 +80,21 @@ class CSP_Processor {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Return the nonce for the current request, generating it on first call.
+	 *
+	 * @since 1.1.1
+	 *
+	 * @return string Base64-encoded nonce.
+	 */
+	public function get_nonce(): string {
+		if ( is_null( $this->nonce ) ) {
+			$this->nonce = $this->generate_nonce();
+		}
+
+		return $this->nonce;
 	}
 
 	/**
@@ -159,7 +188,8 @@ class CSP_Processor {
 	 * @return void
 	 */
 	public function inject_csp_header( string $nonce ): void {
-		if ( headers_sent() ) {
+		// Output-buffer callbacks run once per chunk when ob_flush() is called; send only on the first.
+		if ( $this->header_sent || headers_sent() ) {
 			return;
 		}
 
@@ -167,6 +197,7 @@ class CSP_Processor {
 		$header_value = $this->build_csp_header_value( $nonce );
 
 		header( "{$header_name}: {$header_value}" );
+		$this->header_sent = true;
 	}
 
 	/**

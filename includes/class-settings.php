@@ -56,101 +56,111 @@ class Settings {
 		// All settings use single group to prevent duplicate save notices.
 		register_setting(
 			'ecsp_settings',
-			OPT_ENABLED,
+			OPTION_ENABLED,
 			array(
 				'type'              => 'boolean',
 				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
-				'default'           => DEF_ENABLED,
+				'default'           => DEFAULT_ENABLED,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_MODE,
+			OPTION_MODE,
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => array( $this, 'sanitize_mode' ),
-				'default'           => DEF_MODE,
+				'default'           => DEFAULT_MODE,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_ENABLE_FOR_LOGGED_IN,
+			OPTION_ENABLE_FOR_LOGGED_IN,
 			array(
 				'type'              => 'boolean',
 				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
-				'default'           => DEF_ENABLE_FOR_LOGGED_IN,
+				'default'           => DEFAULT_ENABLE_FOR_LOGGED_IN,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_USE_STRICT_DYNAMIC,
+			OPTION_USE_STRICT_DYNAMIC,
 			array(
 				'type'              => 'boolean',
 				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
-				'default'           => DEF_USE_STRICT_DYNAMIC,
+				'default'           => DEFAULT_USE_STRICT_DYNAMIC,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_USE_UNSAFE_HASHES,
+			OPTION_USE_UNSAFE_HASHES,
 			array(
 				'type'              => 'boolean',
 				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
-				'default'           => DEF_USE_UNSAFE_HASHES,
+				'default'           => DEFAULT_USE_UNSAFE_HASHES,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_PROCESS_STYLES,
+			OPTION_PROCESS_STYLES,
 			array(
 				'type'              => 'boolean',
 				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
-				'default'           => DEF_PROCESS_STYLES,
+				'default'           => DEFAULT_PROCESS_STYLES,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_CUSTOM_DIRECTIVES,
+			OPTION_CUSTOM_DIRECTIVES,
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => array( $this, 'sanitize_textarea' ),
-				'default'           => DEF_CUSTOM_DIRECTIVES,
+				'default'           => DEFAULT_CUSTOM_DIRECTIVES,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_REPORT_URI,
+			OPTION_REPORT_URI,
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => array( $this, 'sanitize_url' ),
-				'default'           => DEF_REPORT_URI,
+				'default'           => DEFAULT_REPORT_URI,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_WHITELISTED_DOMAINS,
+			OPTION_WHITELISTED_DOMAINS,
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => array( $this, 'sanitize_textarea' ),
-				'default'           => DEF_WHITELISTED_DOMAINS,
+				'default'           => DEFAULT_WHITELISTED_DOMAINS,
 			)
 		);
 
 		register_setting(
 			'ecsp_settings',
-			OPT_EXCLUDED_PATHS,
+			OPTION_EXCLUDED_PATHS,
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => array( $this, 'sanitize_textarea' ),
-				'default'           => DEF_EXCLUDED_PATHS,
+				'default'           => DEFAULT_EXCLUDED_PATHS,
+			)
+		);
+
+		register_setting(
+			'ecsp_settings',
+			OPTION_DELETE_DATA_ON_UNINSTALL,
+			array(
+				'type'              => 'boolean',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'default'           => DEFAULT_DELETE_DATA_ON_UNINSTALL,
 			)
 		);
 	}
@@ -186,7 +196,7 @@ class Settings {
 		}
 
 		if ( is_null( $result ) ) {
-			$result = DEF_MODE;
+			$result = DEFAULT_MODE;
 		}
 
 		return $result;

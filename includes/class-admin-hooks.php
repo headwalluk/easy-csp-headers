@@ -136,8 +136,8 @@ class Admin_Hooks {
 			return;
 		}
 
-		$enabled = (bool) filter_var( get_option( OPT_ENABLED, DEF_ENABLED ), FILTER_VALIDATE_BOOLEAN );
-		$mode    = get_option( OPT_MODE, DEF_MODE );
+		$enabled = (bool) filter_var( get_option( OPTION_ENABLED, DEFAULT_ENABLED ), FILTER_VALIDATE_BOOLEAN );
+		$mode    = get_option( OPTION_MODE, DEFAULT_MODE );
 
 		// Show notice if CSP is disabled.
 		if ( ! $enabled ) {
@@ -177,8 +177,8 @@ class Admin_Hooks {
 			return;
 		}
 
-		$enabled = (bool) filter_var( get_option( OPT_ENABLED, DEF_ENABLED ), FILTER_VALIDATE_BOOLEAN );
-		$mode    = get_option( OPT_MODE, DEF_MODE );
+		$enabled = (bool) filter_var( get_option( OPTION_ENABLED, DEFAULT_ENABLED ), FILTER_VALIDATE_BOOLEAN );
+		$mode    = get_option( OPTION_MODE, DEFAULT_MODE );
 
 		// Show notice if CSP is disabled.
 		if ( ! $enabled ) {

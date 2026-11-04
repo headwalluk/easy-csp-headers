@@ -1,58 +1,27 @@
-# Dependencies
-node_modules/
-vendor/
-
-# Build artifacts
-dist/
-build/
-*.zip
-*.min.js
-*.min.css
-
-# System files
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
 # IDE files
-.vscode/
 .idea/
+.vscode/
 *.sublime-project
 *.sublime-workspace
-*.code-workspace
 
-# Log files
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Node modules (if needed later)
+node_modules/
 
-# Environment files
-.env
-.env.local
+# Composer
+vendor/
+composer.lock
 
-# Translation files (generated)
-*.mo
+# Build files
+build/
+*.map
 
-# Temporary files
-*.tmp
-*.temp
-*.swp
-*.swo
-*~
+# WordPress
+wp-config.php
 
-# OS generated files
-.directory
-
-# Testing
-phpunit.xml
-tests/_output/
-tests/_support/_generated/
-
-# Deployment
-deploy.sh
-.deploy/
+# Private development notes. Never published. Backed up with the dev site,
+# and blocked from remote access by dev-notes/.htaccess.
+dev-notes/

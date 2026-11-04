@@ -66,7 +66,7 @@ class CSP_Processor {
 			$this->add_nonce_to_scripts( $tags, $nonce );
 
 			$process_styles = (bool) filter_var(
-				get_option( OPT_PROCESS_STYLES, DEF_PROCESS_STYLES ),
+				get_option( OPTION_PROCESS_STYLES, DEFAULT_PROCESS_STYLES ),
 				FILTER_VALIDATE_BOOLEAN
 			);
 
@@ -220,7 +220,7 @@ class CSP_Processor {
 
 		// Build style-src directive if processing styles.
 		$process_styles = (bool) filter_var(
-			get_option( OPT_PROCESS_STYLES, DEF_PROCESS_STYLES ),
+			get_option( OPTION_PROCESS_STYLES, DEFAULT_PROCESS_STYLES ),
 			FILTER_VALIDATE_BOOLEAN
 		);
 
@@ -236,14 +236,14 @@ class CSP_Processor {
 		$directives[] = "base-uri 'none'";
 
 		// Merge custom directives from settings.
-		$custom_directives = get_option( OPT_CUSTOM_DIRECTIVES, DEF_CUSTOM_DIRECTIVES );
+		$custom_directives = get_option( OPTION_CUSTOM_DIRECTIVES, DEFAULT_CUSTOM_DIRECTIVES );
 		if ( ! empty( $custom_directives ) ) {
 			$custom_parts = $this->parse_custom_directives( $custom_directives );
 			$directives   = array_merge( $directives, $custom_parts );
 		}
 
 		// Add report-uri if configured.
-		$report_uri = get_option( OPT_REPORT_URI, DEF_REPORT_URI );
+		$report_uri = get_option( OPTION_REPORT_URI, DEFAULT_REPORT_URI );
 		if ( ! empty( $report_uri ) ) {
 			$directives[] = 'report-uri ' . esc_url_raw( $report_uri );
 		}
@@ -264,7 +264,7 @@ class CSP_Processor {
 		$sources = array();
 
 		$use_strict_dynamic = (bool) filter_var(
-			get_option( OPT_USE_STRICT_DYNAMIC, DEF_USE_STRICT_DYNAMIC ),
+			get_option( OPTION_USE_STRICT_DYNAMIC, DEFAULT_USE_STRICT_DYNAMIC ),
 			FILTER_VALIDATE_BOOLEAN
 		);
 
@@ -276,7 +276,7 @@ class CSP_Processor {
 		$sources[] = "'unsafe-inline'";
 
 		$use_unsafe_hashes = (bool) filter_var(
-			get_option( OPT_USE_UNSAFE_HASHES, DEF_USE_UNSAFE_HASHES ),
+			get_option( OPTION_USE_UNSAFE_HASHES, DEFAULT_USE_UNSAFE_HASHES ),
 			FILTER_VALIDATE_BOOLEAN
 		);
 
@@ -357,7 +357,7 @@ class CSP_Processor {
 	 */
 	private function get_whitelisted_domains(): array {
 		$result  = array();
-		$setting = get_option( OPT_WHITELISTED_DOMAINS, DEF_WHITELISTED_DOMAINS );
+		$setting = get_option( OPTION_WHITELISTED_DOMAINS, DEFAULT_WHITELISTED_DOMAINS );
 
 		if ( empty( $setting ) ) {
 			return $result;

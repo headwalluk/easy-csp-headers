@@ -22,12 +22,12 @@ echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Use Strict-Dynamic', 'easy-csp-headers' ) );
 echo '<td>';
 $strict_dynamic = (bool) filter_var(
-	get_option( OPT_USE_STRICT_DYNAMIC, DEF_USE_STRICT_DYNAMIC ),
+	get_option( OPTION_USE_STRICT_DYNAMIC, DEFAULT_USE_STRICT_DYNAMIC ),
 	FILTER_VALIDATE_BOOLEAN
 );
 printf(
 	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
-	esc_attr( OPT_USE_STRICT_DYNAMIC ),
+	esc_attr( OPTION_USE_STRICT_DYNAMIC ),
 	checked( $strict_dynamic, true, false ),
 	esc_html__( "Use 'strict-dynamic' in script-src directive", 'easy-csp-headers' )
 );
@@ -43,12 +43,12 @@ echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Use Unsafe-Hashes', 'easy-csp-headers' ) );
 echo '<td>';
 $unsafe_hashes = (bool) filter_var(
-	get_option( OPT_USE_UNSAFE_HASHES, DEF_USE_UNSAFE_HASHES ),
+	get_option( OPTION_USE_UNSAFE_HASHES, DEFAULT_USE_UNSAFE_HASHES ),
 	FILTER_VALIDATE_BOOLEAN
 );
 printf(
 	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
-	esc_attr( OPT_USE_UNSAFE_HASHES ),
+	esc_attr( OPTION_USE_UNSAFE_HASHES ),
 	checked( $unsafe_hashes, true, false ),
 	esc_html__( "Allow inline event handlers with 'unsafe-hashes'", 'easy-csp-headers' )
 );
@@ -64,12 +64,12 @@ echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Process Styles', 'easy-csp-headers' ) );
 echo '<td>';
 $process_styles = (bool) filter_var(
-	get_option( OPT_PROCESS_STYLES, DEF_PROCESS_STYLES ),
+	get_option( OPTION_PROCESS_STYLES, DEFAULT_PROCESS_STYLES ),
 	FILTER_VALIDATE_BOOLEAN
 );
 printf(
 	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
-	esc_attr( OPT_PROCESS_STYLES ),
+	esc_attr( OPTION_PROCESS_STYLES ),
 	checked( $process_styles, true, false ),
 	esc_html__( 'Add nonces to <style> tags and include style-src directive', 'easy-csp-headers' )
 );
@@ -84,10 +84,10 @@ echo '</tr>';
 echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Whitelisted Domains', 'easy-csp-headers' ) );
 echo '<td>';
-$whitelisted = get_option( OPT_WHITELISTED_DOMAINS, DEF_WHITELISTED_DOMAINS );
+$whitelisted = get_option( OPTION_WHITELISTED_DOMAINS, DEFAULT_WHITELISTED_DOMAINS );
 printf(
 	'<textarea name="%s" rows="5" cols="50" class="large-text code">%s</textarea>',
-	esc_attr( OPT_WHITELISTED_DOMAINS ),
+	esc_attr( OPTION_WHITELISTED_DOMAINS ),
 	esc_textarea( $whitelisted )
 );
 printf(
@@ -101,10 +101,10 @@ echo '</tr>';
 echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Custom CSP Directives', 'easy-csp-headers' ) );
 echo '<td>';
-$custom = get_option( OPT_CUSTOM_DIRECTIVES, DEF_CUSTOM_DIRECTIVES );
+$custom = get_option( OPTION_CUSTOM_DIRECTIVES, DEFAULT_CUSTOM_DIRECTIVES );
 printf(
 	'<textarea name="%s" rows="5" cols="50" class="large-text code">%s</textarea>',
-	esc_attr( OPT_CUSTOM_DIRECTIVES ),
+	esc_attr( OPTION_CUSTOM_DIRECTIVES ),
 	esc_textarea( $custom )
 );
 printf(
@@ -118,10 +118,10 @@ echo '</tr>';
 echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Report URI', 'easy-csp-headers' ) );
 echo '<td>';
-$report_uri = get_option( OPT_REPORT_URI, DEF_REPORT_URI );
+$report_uri = get_option( OPTION_REPORT_URI, DEFAULT_REPORT_URI );
 printf(
 	'<input type="url" name="%s" value="%s" class="regular-text code">',
-	esc_attr( OPT_REPORT_URI ),
+	esc_attr( OPTION_REPORT_URI ),
 	esc_attr( $report_uri )
 );
 printf(

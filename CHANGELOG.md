@@ -7,8 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-11-04
+
+### Added
+- In-plugin updates from GitHub Releases (loaded for admin, cron and WP-CLI requests only)
+- *Delete all plugin data when uninstalled* setting, and an `uninstall.php` that honours it. Nothing is deleted unless the setting is on
+- `ECSP_FILE` constant
+- `SECURITY.md`, `CLAUDE.md` and `.distignore`
+
+### Changed
+- Release workflow now builds on a `vX.Y.Z` tag push, creates the GitHub Release itself, and refuses to build unless the plugin header, `ECSP_VERSION` and the `readme.txt` stable tag all match the tag
+- Release zip contents are controlled by `.distignore`
+- `Plugin` is now a singleton (`Plugin::instance()`) started directly from the main plugin file; the `$ecsp_plugin_instance` global and `get_plugin_instance()` are removed
+- Internal constants renamed from `OPT_*`/`DEF_*` to `OPTION_*`/`DEFAULT_*`. Stored option names are unchanged
+- `dev-notes/` is no longer tracked; `.github/copilot-instructions.md` is retired in favour of `CLAUDE.md`
+
 ### Fixed
-- Nonce is now generated once per request, so pages flushed in multiple chunks no longer get nonces that don't match the CSP header
+- Nonce is now generated once per request, so pages flushed in multiple chunks no longer get nonces that don't match the CSP header (since 0.1.0)
 
 ## [1.1.0] - 2026-01-29
 

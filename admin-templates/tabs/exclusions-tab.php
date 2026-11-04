@@ -21,10 +21,10 @@ echo '<table class="form-table">';
 echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Excluded Paths', 'easy-csp-headers' ) );
 echo '<td>';
-$excluded = get_option( OPT_EXCLUDED_PATHS, DEF_EXCLUDED_PATHS );
+$excluded = get_option( OPTION_EXCLUDED_PATHS, DEFAULT_EXCLUDED_PATHS );
 printf(
 	'<textarea name="%s" rows="8" cols="50" class="large-text code">%s</textarea>',
-	esc_attr( OPT_EXCLUDED_PATHS ),
+	esc_attr( OPTION_EXCLUDED_PATHS ),
 	esc_textarea( $excluded )
 );
 printf(

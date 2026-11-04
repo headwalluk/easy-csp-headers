@@ -22,10 +22,10 @@ echo '<table class="form-table">';
 echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Enable CSP Headers', 'easy-csp-headers' ) );
 echo '<td>';
-$enabled = (bool) filter_var( get_option( OPT_ENABLED, DEF_ENABLED ), FILTER_VALIDATE_BOOLEAN );
+$enabled = (bool) filter_var( get_option( OPTION_ENABLED, DEFAULT_ENABLED ), FILTER_VALIDATE_BOOLEAN );
 printf(
 	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
-	esc_attr( OPT_ENABLED ),
+	esc_attr( OPTION_ENABLED ),
 	checked( $enabled, true, false ),
 	esc_html__( 'Enable Content Security Policy processing', 'easy-csp-headers' )
 );
@@ -40,16 +40,16 @@ echo '</tr>';
 echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'CSP Mode', 'easy-csp-headers' ) );
 echo '<td>';
-$mode = get_option( OPT_MODE, DEF_MODE );
+$mode = get_option( OPTION_MODE, DEFAULT_MODE );
 printf(
 	'<label><input type="radio" name="%s" value="report-only" %s> %s</label><br>',
-	esc_attr( OPT_MODE ),
+	esc_attr( OPTION_MODE ),
 	checked( $mode, 'report-only', false ),
 	esc_html__( 'Report-Only (violations logged, not blocked)', 'easy-csp-headers' )
 );
 printf(
 	'<label><input type="radio" name="%s" value="enforce" %s> %s</label>',
-	esc_attr( OPT_MODE ),
+	esc_attr( OPTION_MODE ),
 	checked( $mode, 'enforce', false ),
 	esc_html__( 'Enforce (violations blocked)', 'easy-csp-headers' )
 );
@@ -65,18 +65,39 @@ echo '<tr>';
 printf( '<th scope="row">%s</th>', esc_html__( 'Enable for Logged-in Users', 'easy-csp-headers' ) );
 echo '<td>';
 $enable_logged_in = (bool) filter_var(
-	get_option( OPT_ENABLE_FOR_LOGGED_IN, DEF_ENABLE_FOR_LOGGED_IN ),
+	get_option( OPTION_ENABLE_FOR_LOGGED_IN, DEFAULT_ENABLE_FOR_LOGGED_IN ),
 	FILTER_VALIDATE_BOOLEAN
 );
 printf(
 	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
-	esc_attr( OPT_ENABLE_FOR_LOGGED_IN ),
+	esc_attr( OPTION_ENABLE_FOR_LOGGED_IN ),
 	checked( $enable_logged_in, true, false ),
 	esc_html__( 'Apply CSP headers when users are logged in', 'easy-csp-headers' )
 );
 printf(
 	'<p class="description">%s</p>',
 	esc_html__( 'By default, CSP is disabled for logged-in users. Enable this to test while authenticated.', 'easy-csp-headers' )
+);
+echo '</td>';
+echo '</tr>';
+
+// Delete Data on Uninstall row.
+echo '<tr>';
+printf( '<th scope="row">%s</th>', esc_html_x( 'Uninstall', 'settings row label for data deletion on plugin removal', 'easy-csp-headers' ) );
+echo '<td>';
+$delete_data = (bool) filter_var(
+	get_option( OPTION_DELETE_DATA_ON_UNINSTALL, DEFAULT_DELETE_DATA_ON_UNINSTALL ),
+	FILTER_VALIDATE_BOOLEAN
+);
+printf(
+	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
+	esc_attr( OPTION_DELETE_DATA_ON_UNINSTALL ),
+	checked( $delete_data, true, false ),
+	esc_html__( 'Delete all plugin data when uninstalled', 'easy-csp-headers' )
+);
+printf(
+	'<p class="description">%s</p>',
+	esc_html__( 'When the plugin is deleted from the Plugins screen, remove all of its settings. Deactivating the plugin never deletes anything.', 'easy-csp-headers' )
 );
 echo '</td>';
 echo '</tr>';

@@ -3,10 +3,10 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue.svg)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg?logo=php&logoColor=white)
 ![License](https://img.shields.io/badge/License-GPL%20v2%2B-green.svg)
-![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.1.1-orange.svg)
 ![Code Standards](https://img.shields.io/badge/Code%20Standards-WordPress-brightgreen.svg)
 
-**Version:** 1.1.0  
+**Version:** 1.1.1  
 **Author:** Paul Faulkner  
 **License:** GPL v2 or later
 
@@ -105,20 +105,25 @@ easy-csp-headers/
 ├── easy-csp-headers.php      # Main plugin file
 ├── constants.php              # Plugin constants
 ├── functions-private.php      # Helper functions
+├── uninstall.php              # Opt-in data removal
 ├── phpcs.xml                  # Code standards config
 ├── includes/
 │   ├── class-plugin.php       # Main orchestrator
 │   ├── class-csp-processor.php
 │   ├── class-output-buffer.php
 │   ├── class-settings.php
-│   └── class-admin-hooks.php
+│   ├── class-admin-hooks.php
+│   └── class-headwall-github-plugin-updater.php
 ├── admin-templates/
-│   └── settings-page.php      # Settings UI
+│   ├── settings-page.php      # Settings UI
+│   └── tabs/
 ├── assets/admin/
 │   ├── admin-styles.css
 │   └── admin-scripts.js
-└── dev-notes/                 # Development documentation
+└── languages/
 ```
+
+See `CLAUDE.md` for architecture and coding conventions.
 
 ### Developer Hooks
 

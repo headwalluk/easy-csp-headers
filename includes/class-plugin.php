@@ -20,6 +20,15 @@ defined( 'ABSPATH' ) || die();
 class Plugin {
 
 	/**
+	 * Single instance of the plugin.
+	 *
+	 * @since 1.1.1
+	 *
+	 * @var Plugin|null
+	 */
+	private static ?Plugin $instance = null;
+
+	/**
 	 * CSP Processor instance.
 	 *
 	 * @since 0.1.0
@@ -54,6 +63,30 @@ class Plugin {
 	 * @var Admin_Hooks|null
 	 */
 	private ?Admin_Hooks $admin_hooks = null;
+
+	/**
+	 * Return the single plugin instance, creating it on first call.
+	 *
+	 * @since 1.1.1
+	 *
+	 * @return Plugin
+	 */
+	public static function instance(): Plugin {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
+	 * Use Plugin::instance().
+	 *
+	 * @since 1.1.1
+	 */
+	private function __construct() {
+		// Nothing to set up; collaborators are lazy-loaded by their getters.
+	}
 
 	/**
 	 * Run the plugin.

@@ -2,8 +2,8 @@
 /**
  * Plugin constants.
  *
- * All magic strings and numbers must be defined here.
- * Exception: Translatable text strings use __() or _e() directly.
+ * All magic strings and numbers are defined here. Translatable strings use
+ * the __() family directly.
  *
  * @package Easy_CSP_Headers
  * @since 0.1.0
@@ -13,31 +13,46 @@ namespace Easy_CSP_Headers;
 
 defined( 'ABSPATH' ) || die();
 
-// WordPress Options Keys - Prefix: OPT_.
-const OPT_ENABLED              = 'ecsp_enabled';
-const OPT_MODE                 = 'ecsp_mode';
-const OPT_ENABLE_FOR_LOGGED_IN = 'ecsp_enable_for_logged_in';
-const OPT_PROCESS_STYLES       = 'ecsp_process_styles';
-const OPT_USE_STRICT_DYNAMIC   = 'ecsp_use_strict_dynamic';
-const OPT_USE_UNSAFE_HASHES    = 'ecsp_use_unsafe_hashes';
-const OPT_CUSTOM_DIRECTIVES    = 'ecsp_custom_directives';
-const OPT_REPORT_URI           = 'ecsp_report_uri';
-const OPT_EXCLUDED_PATHS       = 'ecsp_excluded_paths';
-const OPT_WHITELISTED_DOMAINS  = 'ecsp_whitelisted_domains';
+/**
+ * Option names. Each value is stored data and never changes; see CLAUDE.md, Public Contracts.
+ *
+ * @since 0.1.0
+ */
+const OPTION_PREFIX                   = 'ecsp_';
+const OPTION_ENABLED                  = 'ecsp_enabled';
+const OPTION_MODE                     = 'ecsp_mode';
+const OPTION_ENABLE_FOR_LOGGED_IN     = 'ecsp_enable_for_logged_in';
+const OPTION_PROCESS_STYLES           = 'ecsp_process_styles';
+const OPTION_USE_STRICT_DYNAMIC       = 'ecsp_use_strict_dynamic';
+const OPTION_USE_UNSAFE_HASHES        = 'ecsp_use_unsafe_hashes';
+const OPTION_CUSTOM_DIRECTIVES        = 'ecsp_custom_directives';
+const OPTION_REPORT_URI               = 'ecsp_report_uri';
+const OPTION_EXCLUDED_PATHS           = 'ecsp_excluded_paths';
+const OPTION_WHITELISTED_DOMAINS      = 'ecsp_whitelisted_domains';
+const OPTION_DELETE_DATA_ON_UNINSTALL = 'ecsp_delete_data_on_uninstall';
 
-// Default Values - Prefix: DEF_.
-const DEF_ENABLED              = false;
-const DEF_MODE                 = 'report-only';
-const DEF_ENABLE_FOR_LOGGED_IN = false;
-const DEF_PROCESS_STYLES       = false;
-const DEF_USE_STRICT_DYNAMIC   = true;
-const DEF_USE_UNSAFE_HASHES    = false;
-const DEF_CUSTOM_DIRECTIVES    = '';
-const DEF_REPORT_URI           = '';
-const DEF_EXCLUDED_PATHS       = '';
-const DEF_WHITELISTED_DOMAINS  = '';
+/**
+ * Option defaults.
+ *
+ * @since 0.1.0
+ */
+const DEFAULT_ENABLED                  = false;
+const DEFAULT_MODE                     = 'report-only';
+const DEFAULT_ENABLE_FOR_LOGGED_IN     = false;
+const DEFAULT_PROCESS_STYLES           = false;
+const DEFAULT_USE_STRICT_DYNAMIC       = true;
+const DEFAULT_USE_UNSAFE_HASHES        = false;
+const DEFAULT_CUSTOM_DIRECTIVES        = '';
+const DEFAULT_REPORT_URI               = '';
+const DEFAULT_EXCLUDED_PATHS           = '';
+const DEFAULT_WHITELISTED_DOMAINS      = '';
+const DEFAULT_DELETE_DATA_ON_UNINSTALL = false;
 
-// CSP Configuration Constants.
+/**
+ * CSP configuration.
+ *
+ * @since 0.1.0
+ */
 const ALLOWED_MODES = array( 'enforce', 'report-only' );
 
 const EXECUTABLE_SCRIPT_TYPES = array(

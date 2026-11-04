@@ -4,7 +4,7 @@ Tags: security, csp, content-security-policy, xss, headers
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,17 @@ add_filter( 'ecsp_should_skip_csp', function( $skip ) {
 
 == Changelog ==
 
+= 1.1.1 - 2026-11-04 =
+* Fixed: pages flushed in several chunks could get nonces that did not match the CSP header
+* Added automatic updates from GitHub Releases
+* Added "Delete all plugin data when uninstalled" setting (off by default)
+
+= 1.1.0 - 2026-01-29 =
+* Added Test CSP Headers button on the settings page
+* Added admin notices and admin bar indicators for disabled and Report-Only modes
+* Added a reminder to clear page caches after saving settings
+* Settings consolidated into a single form
+
 = 1.0.0 - 2026-01-23 =
 * 🎉 Stable 1.0.0 release
 * Added path exclusion system (exact match and wildcard support)
@@ -130,6 +141,9 @@ add_filter( 'ecsp_should_skip_csp', function( $skip ) {
 * WordPress Coding Standards compliant
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Fixes mismatched nonces on pages flushed in several chunks, and adds automatic updates from GitHub.
 
 = 1.0.0 =
 Stable release! Path exclusions now functional, developer filter added, Help tab enhanced.

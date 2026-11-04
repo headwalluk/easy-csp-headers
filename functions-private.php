@@ -13,18 +13,6 @@ namespace Easy_CSP_Headers;
 defined( 'ABSPATH' ) || die();
 
 /**
- * Get the global plugin instance.
- *
- * @since 0.1.0
- *
- * @return Plugin Plugin instance.
- */
-function get_plugin_instance(): Plugin {
-	global $ecsp_plugin_instance;
-	return $ecsp_plugin_instance;
-}
-
-/**
  * Check if CSP is in Report-Only mode.
  *
  * @since 0.1.0
@@ -32,7 +20,7 @@ function get_plugin_instance(): Plugin {
  * @return bool True if report-only mode, false otherwise.
  */
 function is_report_only_mode(): bool {
-	$mode = get_option( OPT_MODE, DEF_MODE );
+	$mode = get_option( OPTION_MODE, DEFAULT_MODE );
 	return 'report-only' === $mode;
 }
 
@@ -47,7 +35,7 @@ function should_skip_csp(): bool {
 	$result = null;
 
 	// Skip if plugin is disabled.
-	$enabled = (bool) filter_var( get_option( OPT_ENABLED, DEF_ENABLED ), FILTER_VALIDATE_BOOLEAN );
+	$enabled = (bool) filter_var( get_option( OPTION_ENABLED, DEFAULT_ENABLED ), FILTER_VALIDATE_BOOLEAN );
 	if ( ! $enabled ) {
 		$result = true;
 	}
@@ -59,7 +47,7 @@ function should_skip_csp(): bool {
 
 	// Skip if user is logged in and setting is disabled.
 	$enable_for_logged_in = (bool) filter_var(
-		get_option( OPT_ENABLE_FOR_LOGGED_IN, DEF_ENABLE_FOR_LOGGED_IN ),
+		get_option( OPTION_ENABLE_FOR_LOGGED_IN, DEFAULT_ENABLE_FOR_LOGGED_IN ),
 		FILTER_VALIDATE_BOOLEAN
 	);
 
@@ -69,7 +57,7 @@ function should_skip_csp(): bool {
 
 	// Skip if current path is excluded.
 	if ( is_null( $result ) ) {
-		$excluded_paths = get_option( OPT_EXCLUDED_PATHS, DEF_EXCLUDED_PATHS );
+		$excluded_paths = get_option( OPTION_EXCLUDED_PATHS, DEFAULT_EXCLUDED_PATHS );
 		if ( ! empty( $excluded_paths ) ) {
 			$paths        = array_filter( array_map( 'trim', explode( "\n", $excluded_paths ) ) );
 			$request_uri  = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';

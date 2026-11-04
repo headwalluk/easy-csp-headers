@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy CSP Headers 1.1.0\n"
+"Project-Id-Version: Easy CSP Headers 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-csp-headers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-29T20:24:51+00:00\n"
+"POT-Creation-Date: 2026-11-04T20:23:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: easy-csp-headers\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: easy-csp-headers.php
-msgid "https://headwall-hosting.com/plugins/easy-csp-headers"
+msgid "https://headwall-hosting.com/plugins/easy-csp-headers/"
 msgstr ""
 
 #. Description of the plugin
@@ -166,12 +166,25 @@ msgstr ""
 msgid "By default, CSP is disabled for logged-in users. Enable this to test while authenticated."
 msgstr ""
 
-#: admin-templates/tabs/general-tab.php:87
-#: admin-templates/tabs/general-tab.php:91
+#: admin-templates/tabs/general-tab.php:86
+msgctxt "settings row label for data deletion on plugin removal"
+msgid "Uninstall"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:96
+msgid "Delete all plugin data when uninstalled"
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:100
+msgid "When the plugin is deleted from the Plugins screen, remove all of its settings. Deactivating the plugin never deletes anything."
+msgstr ""
+
+#: admin-templates/tabs/general-tab.php:108
+#: admin-templates/tabs/general-tab.php:112
 msgid "Test CSP Headers"
 msgstr ""
 
-#: admin-templates/tabs/general-tab.php:88
+#: admin-templates/tabs/general-tab.php:109
 msgid "Verify that CSP headers are being sent correctly by your server."
 msgstr ""
 

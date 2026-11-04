@@ -99,6 +99,12 @@ printf(
 	esc_html__( 'With strict-dynamic enabled, external scripts loaded by trusted scripts will automatically be allowed. You can also add specific domains to the whitelist.', 'easy-csp-headers' )
 );
 
+printf( '<h3>%s</h3>', esc_html__( 'Legacy Browser Fallbacks', 'easy-csp-headers' ) );
+printf(
+	'<p>%s</p>',
+	esc_html__( "By default the script-src directive includes 'unsafe-inline' and, with strict-dynamic, http: and https:. Current browsers ignore all three, so they only loosen the policy on old browsers that would otherwise break. The two Omit options on the CSP Rules tab remove them for a shorter, strict policy everywhere, at the cost of broken scripts on those old browsers. Test in Report-Only mode first.", 'easy-csp-headers' )
+);
+
 printf( '<h3>%s</h3>', esc_html__( 'Caching', 'easy-csp-headers' ) );
 printf(
 	'<p>%s</p>',

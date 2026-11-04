@@ -67,6 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	// Grey out settings that only apply while strict-dynamic is on. The inputs stay
+	// enabled so their values are still submitted.
+	const strictDynamicCheckbox = document.getElementById('ecsp-use-strict-dynamic');
+	if (strictDynamicCheckbox) {
+		const dependentRows = document.querySelectorAll('.ecsp-depends-on-strict-dynamic');
+		const updateDependentRows = () => {
+			for (const row of dependentRows) {
+				row.classList.toggle('ecsp-inactive', !strictDynamicCheckbox.checked);
+			}
+		};
+		strictDynamicCheckbox.addEventListener('change', updateDependentRows);
+		updateDependentRows();
+	}
+
 	// Test CSP Headers button handler
 	const testButton = document.getElementById('ecsp-test-headers');
 	if (testButton) {

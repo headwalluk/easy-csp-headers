@@ -268,20 +268,25 @@ class CSP_Processor {
 			FILTER_VALIDATE_BOOLEAN
 		);
 
+		$omit_unsafe_inline = (bool) filter_var(
+			get_option( OPTION_OMIT_UNSAFE_INLINE, DEFAULT_OMIT_UNSAFE_INLINE ),
+			FILTER_VALIDATE_BOOLEAN
+		);
+
+		$omit_scheme_fallback = (bool) filter_var(
+			get_option( OPTION_OMIT_SCHEME_FALLBACK, DEFAULT_OMIT_SCHEME_FALLBACK ),
+			FILTER_VALIDATE_BOOLEAN
+		);
+
+		$sources[] = "'nonce-{$nonce}'";
+
 		if ( $use_strict_dynamic ) {
 			$sources[] = "'strict-dynamic'";
 		}
 
-		$sources[] = "'nonce-{$nonce}'";
-		$sources[] = "'unsafe-inline'";
-
-		$use_unsafe_hashes = (bool) filter_var(
-			get_option( OPTION_USE_UNSAFE_HASHES, DEFAULT_USE_UNSAFE_HASHES ),
-			FILTER_VALIDATE_BOOLEAN
-		);
-
-		if ( $use_unsafe_hashes ) {
-			$sources[] = "'unsafe-hashes'";
+		// Only browsers without nonce support honour this; nonce-aware browsers ignore it.
+		if ( ! $omit_unsafe_inline ) {
+			$sources[] = "'unsafe-inline'";
 		}
 
 		// Add whitelisted domains.
@@ -290,8 +295,8 @@ class CSP_Processor {
 			$sources = array_merge( $sources, $whitelisted );
 		}
 
-		// Fallback for browsers without strict-dynamic support.
-		if ( $use_strict_dynamic ) {
+		// Fallback for browsers without strict-dynamic support; browsers with it ignore host sources.
+		if ( $use_strict_dynamic && ! $omit_scheme_fallback ) {
 			$sources[] = 'http:';
 			$sources[] = 'https:';
 		}

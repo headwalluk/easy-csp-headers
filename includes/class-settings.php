@@ -96,16 +96,6 @@ class Settings {
 
 		register_setting(
 			'ecsp_settings',
-			OPTION_USE_UNSAFE_HASHES,
-			array(
-				'type'              => 'boolean',
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
-				'default'           => DEFAULT_USE_UNSAFE_HASHES,
-			)
-		);
-
-		register_setting(
-			'ecsp_settings',
 			OPTION_PROCESS_STYLES,
 			array(
 				'type'              => 'boolean',
@@ -151,6 +141,26 @@ class Settings {
 				'type'              => 'string',
 				'sanitize_callback' => array( $this, 'sanitize_textarea' ),
 				'default'           => DEFAULT_EXCLUDED_PATHS,
+			)
+		);
+
+		register_setting(
+			'ecsp_settings',
+			OPTION_OMIT_UNSAFE_INLINE,
+			array(
+				'type'              => 'boolean',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'default'           => DEFAULT_OMIT_UNSAFE_INLINE,
+			)
+		);
+
+		register_setting(
+			'ecsp_settings',
+			OPTION_OMIT_SCHEME_FALLBACK,
+			array(
+				'type'              => 'boolean',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'default'           => DEFAULT_OMIT_SCHEME_FALLBACK,
 			)
 		);
 

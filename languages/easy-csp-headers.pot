@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy CSP Headers 1.1.1\n"
+"Project-Id-Version: Easy CSP Headers 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-csp-headers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-04T20:23:51+00:00\n"
+"POT-Creation-Date: 2026-11-04T21:02:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: easy-csp-headers\n"
@@ -69,50 +69,62 @@ msgid "Recommended for best security. Allows scripts loaded by trusted scripts."
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:43
-msgid "Use Unsafe-Hashes"
+msgid "Omit Unsafe-Inline Fallback"
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:53
-msgid "Allow inline event handlers with 'unsafe-hashes'"
+msgid "Remove 'unsafe-inline' from the script-src directive"
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:57
-msgid "Less secure. Allows onclick, onload, etc. Use only if needed for legacy code."
+msgid "Current browsers already ignore 'unsafe-inline' when a nonce is present. It only matters to very old browsers without nonce support, where removing it blocks every inline script."
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:64
-msgid "Process Styles"
+msgid "Omit http:/https: Fallback"
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:74
-msgid "Add nonces to <style> tags and include style-src directive"
+msgid "Remove the http: and https: sources added alongside strict-dynamic"
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:78
-msgid "Enable if you want to restrict inline styles as well as scripts."
+msgid "Browsers that support strict-dynamic ignore these. On older browsers without it (such as Safari before 15.4), removing them blocks scripts that trusted scripts load, such as analytics and chat widgets. Only applies when Use Strict-Dynamic is on."
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:85
-msgid "Whitelisted Domains"
+msgid "Process Styles"
 msgstr ""
 
 #: admin-templates/tabs/csp-rules-tab.php:95
+msgid "Add nonces to <style> tags and include style-src directive"
+msgstr ""
+
+#: admin-templates/tabs/csp-rules-tab.php:99
+msgid "Enable if you want to restrict inline styles as well as scripts."
+msgstr ""
+
+#: admin-templates/tabs/csp-rules-tab.php:106
+msgid "Whitelisted Domains"
+msgstr ""
+
+#: admin-templates/tabs/csp-rules-tab.php:116
 msgid "Add trusted domains (one per line). Example: https://cdn.example.com"
 msgstr ""
 
-#: admin-templates/tabs/csp-rules-tab.php:102
+#: admin-templates/tabs/csp-rules-tab.php:123
 msgid "Custom CSP Directives"
 msgstr ""
 
-#: admin-templates/tabs/csp-rules-tab.php:112
+#: admin-templates/tabs/csp-rules-tab.php:133
 msgid "Add custom CSP directives (one per line). Example: img-src * data:"
 msgstr ""
 
-#: admin-templates/tabs/csp-rules-tab.php:119
+#: admin-templates/tabs/csp-rules-tab.php:140
 msgid "Report URI"
 msgstr ""
 
-#: admin-templates/tabs/csp-rules-tab.php:129
+#: admin-templates/tabs/csp-rules-tab.php:150
 msgid "URL where CSP violation reports should be sent."
 msgstr ""
 
@@ -310,58 +322,66 @@ msgid "With strict-dynamic enabled, external scripts loaded by trusted scripts w
 msgstr ""
 
 #: admin-templates/tabs/help-tab.php:102
-msgid "Caching"
+msgid "Legacy Browser Fallbacks"
 msgstr ""
 
 #: admin-templates/tabs/help-tab.php:105
+msgid "By default the script-src directive includes 'unsafe-inline' and, with strict-dynamic, http: and https:. Current browsers ignore all three, so they only loosen the policy on old browsers that would otherwise break. The two Omit options on the CSP Rules tab remove them for a shorter, strict policy everywhere, at the cost of broken scripts on those old browsers. Test in Report-Only mode first."
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:108
+msgid "Caching"
+msgstr ""
+
+#: admin-templates/tabs/help-tab.php:111
 msgid "This plugin works with page caching plugins. The nonce is generated when the cache is built and remains consistent until the cache is cleared."
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:109
+#: admin-templates/tabs/help-tab.php:115
 msgid "Critical:"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:110
+#: admin-templates/tabs/help-tab.php:116
 msgid "After changing ANY setting on this page, you MUST clear your page cache for the changes to take effect. If you do not see changes, check your admin bar for CSP status notifications."
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:114
+#: admin-templates/tabs/help-tab.php:120
 msgid "Path Exclusions"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:117
+#: admin-templates/tabs/help-tab.php:123
 msgid "You can exclude specific paths from CSP processing using exact matches or wildcard patterns:"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:122
+#: admin-templates/tabs/help-tab.php:128
 msgid "Exact match:"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:123
+#: admin-templates/tabs/help-tab.php:129
 msgid "- Only matches exactly /checkout/"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:127
+#: admin-templates/tabs/help-tab.php:133
 msgid "Wildcard:"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:128
+#: admin-templates/tabs/help-tab.php:134
 msgid "- Matches /checkout/ and all subpages"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:132
+#: admin-templates/tabs/help-tab.php:138
 msgid "Example:"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:133
+#: admin-templates/tabs/help-tab.php:139
 msgid "- Exclude entire admin area"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:138
+#: admin-templates/tabs/help-tab.php:144
 msgid "Developer Hooks"
 msgstr ""
 
-#: admin-templates/tabs/help-tab.php:141
+#: admin-templates/tabs/help-tab.php:147
 msgid "Developers can programmatically control CSP processing using the ecsp_should_skip_csp filter:"
 msgstr ""
 

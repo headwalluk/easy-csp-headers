@@ -24,7 +24,8 @@ fixtures or commit messages.
 
 `dev-notes/` is **private and untracked** (`.gitignore`), backed up with the dev site, and
 blocked from the web by `dev-notes/.htaccess`. It is the right home for client-identifying
-material. Never copy content from `dev-notes/` into a tracked file without scrubbing it, and
+material, though anonymised references ("a client site") are still preferred there.
+Never copy content from `dev-notes/` into a tracked file without scrubbing it, and
 never reference a `dev-notes/` path from a file that ships in the release zip.
 
 ## Commands

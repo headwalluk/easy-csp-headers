@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-04
+
+### Added
+- *Omit Unsafe-Inline Fallback* and *Omit http:/https: Fallback* settings (both off by default) to drop the legacy-browser fallbacks from `script-src`. With both on and strict-dynamic enabled, the directive is `script-src 'nonce-…' 'strict-dynamic'`
+
+### Changed
+- `script-src` now lists the nonce before `'strict-dynamic'`. Token order has no effect on how browsers apply the policy
+- Tested up to WordPress 7.1
+
+### Removed
+- *Use Unsafe-Hashes* setting. `'unsafe-hashes'` only allows inline event handlers whose hashes are also listed, and the plugin never listed any, so the token had no effect. Policies on sites with it ticked lose the token and otherwise behave the same. The stored `ecsp_use_unsafe_hashes` option is left in place and removed by the uninstaller
+
 ## [1.1.1] - 2026-11-04
 
 ### Added

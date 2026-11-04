@@ -2,9 +2,9 @@
 Contributors: paulfaulkner
 Tags: security, csp, content-security-policy, xss, headers
 Requires at least: 6.4
-Tested up to: 6.7
+Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,12 @@ add_filter( 'ecsp_should_skip_csp', function( $skip ) {
 
 == Changelog ==
 
+= 1.2.0 - 2026-11-04 =
+* Added opt-in settings to drop the legacy-browser fallbacks ('unsafe-inline' and http:/https:) from script-src
+* The nonce is now listed before 'strict-dynamic' in script-src (no effect on how browsers apply the policy)
+* Removed the Use Unsafe-Hashes setting, which had no effect
+* Tested up to WordPress 7.1
+
 = 1.1.1 - 2026-11-04 =
 * Fixed: pages flushed in several chunks could get nonces that did not match the CSP header
 * Added automatic updates from GitHub Releases
@@ -141,6 +147,9 @@ add_filter( 'ecsp_should_skip_csp', function( $skip ) {
 * WordPress Coding Standards compliant
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+New opt-in settings for a stricter script-src. Existing policies are unchanged unless you turn them on.
 
 = 1.1.1 =
 Fixes mismatched nonces on pages flushed in several chunks, and adds automatic updates from GitHub.

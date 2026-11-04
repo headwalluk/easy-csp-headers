@@ -3,10 +3,10 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue.svg)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg?logo=php&logoColor=white)
 ![License](https://img.shields.io/badge/License-GPL%20v2%2B-green.svg)
-![Version](https://img.shields.io/badge/Version-1.1.1-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.2.0-orange.svg)
 ![Code Standards](https://img.shields.io/badge/Code%20Standards-WordPress-brightgreen.svg)
 
-**Version:** 1.1.1  
+**Version:** 1.2.0  
 **Author:** Paul Faulkner  
 **License:** GPL v2 or later
 
@@ -53,7 +53,6 @@ A WordPress plugin that automatically generates and injects Content Security Pol
 ### CSP Rules
 
 - **Use Strict-Dynamic** - Enable modern CSP with automatic trust propagation
-- **Use Unsafe-Hashes** - Allow inline event handlers (less secure, for legacy code)
 - **Process Styles** - Add nonces to `<style>` tags and include style-src directive
 - **Whitelisted Domains** - Add trusted external domains
 - **Custom CSP Directives** - Add additional CSP rules

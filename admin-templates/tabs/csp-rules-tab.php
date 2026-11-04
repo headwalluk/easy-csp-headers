@@ -26,7 +26,7 @@ $strict_dynamic = (bool) filter_var(
 	FILTER_VALIDATE_BOOLEAN
 );
 printf(
-	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
+	'<label><input type="checkbox" id="ecsp-use-strict-dynamic" name="%s" value="1" %s> %s</label>',
 	esc_attr( OPTION_USE_STRICT_DYNAMIC ),
 	checked( $strict_dynamic, true, false ),
 	esc_html__( "Use 'strict-dynamic' in script-src directive", 'easy-csp-headers' )
@@ -38,23 +38,44 @@ printf(
 echo '</td>';
 echo '</tr>';
 
-// Use Unsafe-Hashes row.
+// Omit Unsafe-Inline row.
 echo '<tr>';
-printf( '<th scope="row">%s</th>', esc_html__( 'Use Unsafe-Hashes', 'easy-csp-headers' ) );
+printf( '<th scope="row">%s</th>', esc_html__( 'Omit Unsafe-Inline Fallback', 'easy-csp-headers' ) );
 echo '<td>';
-$unsafe_hashes = (bool) filter_var(
-	get_option( OPTION_USE_UNSAFE_HASHES, DEFAULT_USE_UNSAFE_HASHES ),
+$omit_unsafe_inline = (bool) filter_var(
+	get_option( OPTION_OMIT_UNSAFE_INLINE, DEFAULT_OMIT_UNSAFE_INLINE ),
 	FILTER_VALIDATE_BOOLEAN
 );
 printf(
 	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
-	esc_attr( OPTION_USE_UNSAFE_HASHES ),
-	checked( $unsafe_hashes, true, false ),
-	esc_html__( "Allow inline event handlers with 'unsafe-hashes'", 'easy-csp-headers' )
+	esc_attr( OPTION_OMIT_UNSAFE_INLINE ),
+	checked( $omit_unsafe_inline, true, false ),
+	esc_html__( "Remove 'unsafe-inline' from the script-src directive", 'easy-csp-headers' )
 );
 printf(
 	'<p class="description">%s</p>',
-	esc_html__( 'Less secure. Allows onclick, onload, etc. Use only if needed for legacy code.', 'easy-csp-headers' )
+	esc_html__( "Current browsers already ignore 'unsafe-inline' when a nonce is present. It only matters to very old browsers without nonce support, where removing it blocks every inline script.", 'easy-csp-headers' )
+);
+echo '</td>';
+echo '</tr>';
+
+// Omit Scheme Fallback row. Only has an effect while strict-dynamic is on.
+echo '<tr class="ecsp-depends-on-strict-dynamic">';
+printf( '<th scope="row">%s</th>', esc_html__( 'Omit http:/https: Fallback', 'easy-csp-headers' ) );
+echo '<td>';
+$omit_scheme_fallback = (bool) filter_var(
+	get_option( OPTION_OMIT_SCHEME_FALLBACK, DEFAULT_OMIT_SCHEME_FALLBACK ),
+	FILTER_VALIDATE_BOOLEAN
+);
+printf(
+	'<label><input type="checkbox" name="%s" value="1" %s> %s</label>',
+	esc_attr( OPTION_OMIT_SCHEME_FALLBACK ),
+	checked( $omit_scheme_fallback, true, false ),
+	esc_html__( 'Remove the http: and https: sources added alongside strict-dynamic', 'easy-csp-headers' )
+);
+printf(
+	'<p class="description">%s</p>',
+	esc_html__( 'Browsers that support strict-dynamic ignore these. On older browsers without it (such as Safari before 15.4), removing them blocks scripts that trusted scripts load, such as analytics and chat widgets. Only applies when Use Strict-Dynamic is on.', 'easy-csp-headers' )
 );
 echo '</td>';
 echo '</tr>';

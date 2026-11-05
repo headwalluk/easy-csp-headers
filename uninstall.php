@@ -15,6 +15,7 @@ namespace Easy_CSP_Headers;
 defined( 'WP_UNINSTALL_PLUGIN' ) || die();
 
 require_once __DIR__ . '/constants.php';
+require_once __DIR__ . '/includes/class-github-updater.php';
 
 $easy_csp_headers_delete_data = (bool) filter_var(
 	get_option( OPTION_DELETE_DATA_ON_UNINSTALL, DEFAULT_DELETE_DATA_ON_UNINSTALL ),
@@ -38,4 +39,6 @@ if ( $easy_csp_headers_delete_data ) {
 	foreach ( $easy_csp_headers_option_names as $easy_csp_headers_option_name ) {
 		delete_option( $easy_csp_headers_option_name );
 	}
+
+	Github_Updater::delete_cache( basename( __DIR__ ) );
 }

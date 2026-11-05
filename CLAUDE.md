@@ -67,7 +67,7 @@ Reset any option you touch afterwards, and test the defensive path as well as th
 Classes are loaded manually (no autoloader). `Plugin` lazy-loads its collaborators through
 `get_processor()`, `get_output_buffer()`, `get_settings()` and `get_admin_hooks()`.
 
-The GitHub updater (`includes/class-headwall-github-plugin-updater.php`) loads only for admin,
+The GitHub updater (`includes/class-github-updater.php`) loads only for admin,
 cron and WP-CLI requests.
 
 ### Request Flow
@@ -100,13 +100,13 @@ must also store and replay the header.
 | `includes/class-csp-processor.php` | Nonce generation, tag rewriting, header building |
 | `includes/class-settings.php` | Settings API registration and sanitisation |
 | `includes/class-admin-hooks.php` | Settings page, admin notices, admin bar, header test AJAX |
-| `includes/class-headwall-github-plugin-updater.php` | Portable updater shared across Headwall plugins. Don't edit it here; update the shared copy |
+| `includes/class-github-updater.php` | Updater ported from Quick 2FA, which owns it. Change only `namespace` and `@package`; fix it there and copy it here (see Quick 2FA's *Porting the GitHub updater*) |
 | `admin-templates/` | Settings page and its tabs (code-first templates) |
 
 ### Data Storage
 
 - **`wp_options` only.** No user meta, transients or custom tables (the updater keeps its own
-  `headwall_ghu_*` transient)
+  `easy_csp_headers_github_release` and `_github_failed` transients, removed by `uninstall.php`)
 - **Every option carries `OPTION_PREFIX` (`ecsp_`).** `uninstall.php` finds options by prefix,
   so an option without it survives an uninstall
 - **Uninstall deletes nothing by default.** Only with *Delete all plugin data when uninstalled*
@@ -118,7 +118,7 @@ Treat everything in this table as a contract, whether or not it is documented as
 
 | Contract | Examples | Breaks when |
 |----------|----------|-------------|
-| Filters | `ecsp_should_skip_csp`, `headwall_github_updater_enabled` (shared updater) | renamed or removed, or an argument is removed or reordered |
+| Filters | `ecsp_should_skip_csp`, `ecsp_updater_enabled`, `headwall_github_updater_enabled` (deprecated, bridged by `apply_deprecated_updater_filter()`) | renamed or removed, or an argument is removed or reordered |
 | Option names | `ecsp_enabled`, `ecsp_mode`, `ecsp_whitelisted_domains` | a constant's **value** changes. Settings stored under the old name are ignored |
 | Global constants | `ECSP_VERSION`, `ECSP_DIR`, `ECSP_URL`, `ECSP_FILE` | renamed or removed |
 | Script and style handles | `ecsp-admin-scripts`, `ecsp-admin-styles` | renamed |

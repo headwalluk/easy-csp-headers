@@ -97,3 +97,28 @@ function should_skip_csp(): bool {
 	 */
 	return (bool) apply_filters( 'ecsp_should_skip_csp', $result );
 }
+
+/**
+ * Pass the deprecated headwall_github_updater_enabled filter's result into ecsp_updater_enabled.
+ *
+ * Hooked onto ecsp_updater_enabled at PHP_INT_MIN so it runs first.
+ *
+ * @since 1.3.0
+ *
+ * @param mixed $enabled Whether auto-updates are enabled. Default true.
+ * @return mixed The deprecated filter's result.
+ */
+function apply_deprecated_updater_filter( mixed $enabled ): mixed {
+	/**
+	 * Filter whether GitHub auto-updates are enabled for a plugin.
+	 *
+	 * @since 1.1.1
+	 * @deprecated 1.3.0 Use ecsp_updater_enabled.
+	 *
+	 * @param bool   $enabled     Whether auto-updates are enabled. Default true.
+	 * @param string $plugin_slug The plugin directory name.
+	 * @param string $github_repo The GitHub repository in "owner/repo" format.
+	 */
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Deprecated hook name inherited from the shared Headwall updater.
+	return apply_filters_deprecated( 'headwall_github_updater_enabled', array( $enabled, dirname( ECSP_BASENAME ), UPDATER_GITHUB_REPO ), '1.3.0', 'ecsp_updater_enabled' );
+}

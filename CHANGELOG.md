@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-05
+
+### Added
+- `ecsp_updater_enabled` filter. Return `false` to disable update checks for this plugin only
+
+### Changed
+- The GitHub updater is now `Easy_CSP_Headers\Github_Updater` (`includes/class-github-updater.php`), replacing the shared `Headwall_GitHub_Plugin_Updater` drop-in. It logs failed release lookups unconditionally, backs off for an hour after a failure instead of retrying on every check, and logs an error if the plugin header and `ECSP_VERSION` disagree
+- Release data is cached in `easy_csp_headers_github_release` (and `easy_csp_headers_github_failed` after a failure). The old `headwall_ghu_*` transient expires on its own within 12 hours. The uninstaller removes both new transients when *Delete all plugin data* is on
+
+### Deprecated
+- `headwall_github_updater_enabled` filter. It still works, with the same arguments, and its result is passed into `ecsp_updater_enabled`
+
 ## [1.2.0] - 2026-11-04
 
 ### Added

@@ -67,3 +67,10 @@ const EXECUTABLE_SCRIPT_TYPES = array(
 );
 
 const NONCE_BYTE_LENGTH = 20;
+
+/**
+ * GitHub repository the updater checks for releases.
+ *
+ * @since 1.3.0
+ */
+const UPDATER_GITHUB_REPO = 'headwalluk/easy-csp-headers';

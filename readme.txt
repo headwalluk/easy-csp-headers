@@ -4,7 +4,7 @@ Tags: security, csp, content-security-policy, xss, headers
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,11 @@ add_filter( 'ecsp_should_skip_csp', function( $skip ) {
 
 == Changelog ==
 
+= 1.3.0 - 2026-11-05 =
+* Reworked the GitHub updater: failed update checks are logged and retried after an hour instead of on every check
+* Added the ecsp_updater_enabled filter to disable update checks for this plugin
+* Deprecated the headwall_github_updater_enabled filter. It still works
+
 = 1.2.0 - 2026-11-04 =
 * Added opt-in settings to drop the legacy-browser fallbacks ('unsafe-inline' and http:/https:) from script-src
 * The nonce is now listed before 'strict-dynamic' in script-src (no effect on how browsers apply the policy)
@@ -147,6 +152,9 @@ add_filter( 'ecsp_should_skip_csp', function( $skip ) {
 * WordPress Coding Standards compliant
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+More reliable update checks. If you disable updates with the headwall_github_updater_enabled filter, it still works, but switch to ecsp_updater_enabled.
 
 = 1.2.0 =
 New opt-in settings for a stricter script-src. Existing policies are unchanged unless you turn them on.

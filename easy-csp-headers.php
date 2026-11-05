@@ -3,7 +3,7 @@
  * Plugin Name: Easy CSP Headers
  * Plugin URI: https://headwall-hosting.com/plugins/easy-csp-headers/
  * Description: Automatically generate and inject Content Security Policy (CSP) headers with nonces for enhanced security.
- * Version: 1.2.0
+ * Version: 1.3.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Paul Faulkner
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ECSP_VERSION', '1.2.0' );
+define( 'ECSP_VERSION', '1.3.0' );
 define( 'ECSP_FILE', __FILE__ );
 define( 'ECSP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ECSP_URL', plugin_dir_url( __FILE__ ) );
@@ -34,8 +34,9 @@ require_once ECSP_DIR . 'includes/class-plugin.php';
 
 // GitHub auto-updates (admin, cron and WP-CLI only — no need to load on front-end requests).
 if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-	require_once ECSP_DIR . 'includes/class-headwall-github-plugin-updater.php';
-	new Headwall_GitHub_Plugin_Updater( ECSP_FILE, 'headwalluk/easy-csp-headers' );
+	require_once ECSP_DIR . 'includes/class-github-updater.php';
+	add_filter( 'ecsp_updater_enabled', 'Easy_CSP_Headers\apply_deprecated_updater_filter', PHP_INT_MIN );
+	new Easy_CSP_Headers\Github_Updater( ECSP_FILE, Easy_CSP_Headers\UPDATER_GITHUB_REPO, ECSP_VERSION, 'ecsp_updater_enabled' );
 }
 
 /**

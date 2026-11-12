@@ -61,7 +61,16 @@ echo '</tr>';
 
 // Omit Scheme Fallback row. Only has an effect while strict-dynamic is on.
 echo '<tr class="ecsp-depends-on-strict-dynamic">';
-printf( '<th scope="row">%s</th>', esc_html__( 'Omit http:/https: Fallback', 'easy-csp-headers' ) );
+printf(
+	'<th scope="row">%s</th>',
+	esc_html(
+		sprintf(
+			/* translators: %s is a list of CSP source keywords, http: and https:, shown as they are */
+			__( 'Omit %s Fallback', 'easy-csp-headers' ),
+			'http:/https:'
+		)
+	)
+);
 echo '<td>';
 $omit_scheme_fallback = (bool) filter_var(
 	get_option( OPTION_OMIT_SCHEME_FALLBACK, DEFAULT_OMIT_SCHEME_FALLBACK ),
@@ -80,9 +89,9 @@ printf(
 echo '</td>';
 echo '</tr>';
 
-// Process Styles row.
+// Add Nonces to Styles row.
 echo '<tr>';
-printf( '<th scope="row">%s</th>', esc_html__( 'Process Styles', 'easy-csp-headers' ) );
+printf( '<th scope="row">%s</th>', esc_html__( 'Add Nonces to Styles', 'easy-csp-headers' ) );
 echo '<td>';
 $process_styles = (bool) filter_var(
 	get_option( OPTION_PROCESS_STYLES, DEFAULT_PROCESS_STYLES ),

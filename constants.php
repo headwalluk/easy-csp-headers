@@ -60,17 +60,48 @@ const DEFAULT_OMIT_SCHEME_FALLBACK     = false;
  */
 const ALLOWED_MODES = array( 'enforce', 'report-only' );
 
+/**
+ * Script `type` values that make a script executable, so it needs the nonce:
+ * "module" and the JavaScript MIME type essences from the HTML standard. Compared
+ * lowercased and trimmed, as browsers do. A missing or empty type is executable too.
+ *
+ * @since 1.4.0
+ */
 const EXECUTABLE_SCRIPT_TYPES = array(
-	'text/javascript',
 	'module',
+	'application/ecmascript',
 	'application/javascript',
+	'application/x-ecmascript',
+	'application/x-javascript',
+	'text/ecmascript',
+	'text/javascript',
+	'text/javascript1.0',
+	'text/javascript1.1',
+	'text/javascript1.2',
+	'text/javascript1.3',
+	'text/javascript1.4',
+	'text/javascript1.5',
+	'text/jscript',
+	'text/livescript',
+	'text/x-ecmascript',
+	'text/x-javascript',
 );
 
 const NONCE_BYTE_LENGTH = 20;
 
 /**
- * GitHub repository the updater checks for releases.
+ * Plugin name, shown untranslated.
+ *
+ * @since 1.4.0
+ */
+const PLUGIN_NAME = 'Easy CSP Headers';
+
+/**
+ * GitHub updater: the repository checked for releases, and the filter passed to
+ * Github_Updater. Other hooks are named literally at each call, so phpcs can
+ * check their prefix.
  *
  * @since 1.3.0
  */
-const UPDATER_GITHUB_REPO = 'headwalluk/easy-csp-headers';
+const UPDATER_GITHUB_REPO    = 'headwalluk/easy-csp-headers';
+const FILTER_UPDATER_ENABLED = 'ecsp_updater_enabled';

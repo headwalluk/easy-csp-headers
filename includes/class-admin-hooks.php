@@ -49,7 +49,7 @@ class Admin_Hooks {
 	 */
 	public function add_menu_items(): void {
 		add_options_page(
-			__( 'Easy CSP Headers', 'easy-csp-headers' ),
+			PLUGIN_NAME,
 			__( 'CSP Headers', 'easy-csp-headers' ),
 			'manage_options',
 			'easy-csp-headers',

@@ -5,9 +5,9 @@
  * Description: Automatically generate and inject Content Security Policy (CSP) headers with nonces for enhanced security.
  * Version: 1.3.0
  * Requires at least: 6.4
- * Requires PHP: 8.0
+ * Requires PHP: 8.2
  * Author: Paul Faulkner
- * Author URI: https://headwall-hosting.com/
+ * Author URI: https://headwall-hosting.com/a-web-guys-blog/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: easy-csp-headers
@@ -16,6 +16,7 @@
  * @package Easy_CSP_Headers
  */
 
+// Exit if accessed directly.
 defined( 'ABSPATH' ) || die();
 
 define( 'ECSP_VERSION', '1.3.0' );
@@ -32,11 +33,11 @@ require_once ECSP_DIR . 'includes/class-settings.php';
 require_once ECSP_DIR . 'includes/class-admin-hooks.php';
 require_once ECSP_DIR . 'includes/class-plugin.php';
 
-// GitHub auto-updates (admin, cron and WP-CLI only — no need to load on front-end requests).
+// GitHub auto-updates: admin, cron and WP-CLI only.
 if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 	require_once ECSP_DIR . 'includes/class-github-updater.php';
-	add_filter( 'ecsp_updater_enabled', 'Easy_CSP_Headers\apply_deprecated_updater_filter', PHP_INT_MIN );
-	new Easy_CSP_Headers\Github_Updater( ECSP_FILE, Easy_CSP_Headers\UPDATER_GITHUB_REPO, ECSP_VERSION, 'ecsp_updater_enabled' );
+	add_filter( Easy_CSP_Headers\FILTER_UPDATER_ENABLED, 'Easy_CSP_Headers\apply_deprecated_updater_filter', PHP_INT_MIN );
+	new Easy_CSP_Headers\Github_Updater( ECSP_FILE, Easy_CSP_Headers\UPDATER_GITHUB_REPO, ECSP_VERSION, Easy_CSP_Headers\FILTER_UPDATER_ENABLED );
 }
 
 /**

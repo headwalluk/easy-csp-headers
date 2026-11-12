@@ -98,6 +98,8 @@ class Plugin {
 	 * @return void
 	 */
 	public function run(): void {
+		add_action( 'init', array( $this, 'load_textdomain' ) );
+
 		// Register settings (must happen early).
 		add_action( 'admin_init', array( $this->get_settings(), 'register_settings' ) );
 
@@ -119,6 +121,17 @@ class Plugin {
 
 		// Start output buffering for CSP processing.
 		add_action( 'template_redirect', array( $this->get_output_buffer(), 'start_buffer' ) );
+	}
+
+	/**
+	 * Load plugin text domain for translations.
+	 *
+	 * Needed for the translations shipped in the plugin's own languages/ directory.
+	 *
+	 * @since 1.4.0
+	 */
+	public function load_textdomain(): void {
+		load_plugin_textdomain( 'easy-csp-headers', false, dirname( ECSP_BASENAME ) . '/languages' );
 	}
 
 	/**

@@ -160,13 +160,16 @@ class CSP_Processor {
 	public function should_process_script( ?string $type ): bool {
 		$result = null;
 
+		// Browsers trim ASCII whitespace and compare the type case-insensitively.
+		$normalised_type = is_string( $type ) ? strtolower( trim( $type, " \t\n\r\f" ) ) : '';
+
 		// No type attribute means executable JavaScript.
-		if ( is_null( $type ) || '' === $type ) {
+		if ( '' === $normalised_type ) {
 			$result = true;
 		}
 
-		// Check against whitelist of executable types.
-		if ( is_null( $result ) && in_array( $type, EXECUTABLE_SCRIPT_TYPES, true ) ) {
+		// Check against the executable types.
+		if ( is_null( $result ) && in_array( $normalised_type, EXECUTABLE_SCRIPT_TYPES, true ) ) {
 			$result = true;
 		}
 

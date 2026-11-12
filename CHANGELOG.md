@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+**Requires PHP 8.2** (from 8.0). Sites below it stop being offered updates.
+
+### Fixed
+
+- **Scripts with a capitalised or older JavaScript `type` got no nonce**, so in Enforce mode the browser blocked them. `type="text/JavaScript"`, `type="Module"`, `type="text/ecmascript"` and the other JavaScript types in the HTML standard were missed, because the type was compared case-sensitively against three values. It is now trimmed and compared case-insensitively against the full list. Introduced in 0.1.0.
+- The settings page title translated the plugin's name. It now stays in English.
+- Some setting labels were mistranslated (French rendered **Test CSP Headers** as "body CSP headers"). They now carry translator context. **Process Styles** is renamed **Add Nonces to Styles**, which says what it does.
+
+### Changed
+
+- The plugin and author links on the Plugins screen now go to the plugin's page and the author's page on headwall-hosting.com.
+- Only the plugin description is translated; the plugin name, author and links stay in English.
+
+### Added
+
+- Translations: de_DE, el_GR, en_GB, es_ES, fr_FR, it_IT, nl_NL, pl_PL, loaded with `load_plugin_textdomain()`.
+- Documentation in `docs/`: how it works, troubleshooting, and hooks and filters.
+
+### Removed
+
+- `readme.txt`. `README.md`, `CHANGELOG.md` and `docs/` cover it, and the release workflow no longer checks its stable tag.
+
 ## [1.3.0] - 2026-11-05
 
 ### Added

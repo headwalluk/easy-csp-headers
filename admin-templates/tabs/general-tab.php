@@ -105,11 +105,11 @@ echo '</tr>';
 echo '</table>'; // .form-table
 
 // Test CSP Headers section.
-printf( '<h2>%s</h2>', esc_html__( 'Test CSP Headers', 'easy-csp-headers' ) );
+printf( '<h2>%s</h2>', esc_html_x( 'Test CSP Headers', 'button and section label: run a check that the server sends the CSP headers', 'easy-csp-headers' ) );
 printf( '<p>%s</p>', esc_html__( 'Verify that CSP headers are being sent correctly by your server.', 'easy-csp-headers' ) );
 printf(
 	'<p><button type="button" id="ecsp-test-headers" class="button button-secondary">%s</button><span class="spinner" style="float:none;margin:0 0 0 10px;"></span></p>',
-	esc_html__( 'Test CSP Headers', 'easy-csp-headers' )
+	esc_html_x( 'Test CSP Headers', 'button and section label: run a check that the server sends the CSP headers', 'easy-csp-headers' )
 );
 echo '<div id="ecsp-test-results" style="display:none;margin-top:15px;"></div>';
 
